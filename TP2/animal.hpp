@@ -4,11 +4,11 @@
 #include <string>
 using namespace std;
 
-class animal{
+class Animal{
     private:
         string nombre;
         int edad;
-        int tamanio;//usa funcion aux para pasar del entero al string que indica el tamanio
+        string tamanio;
         char especie;
         string personalidad;
         int hambre;
@@ -16,7 +16,10 @@ class animal{
     public:
         //PRE: -
         //POST: Inicializa animal con los parametros indicados.
-        animal(string nombre, int edad, string tamanio, char especie, string personalidad){};
+        Animal(string nombre, int edad, string tamanio, char especie, string personalidad){};
+        //PRE: -
+        //POST: Devuelve el nombre del animal.
+        string obtener_nombre();
         //PRE: -
         //POST: Modifica el hambre e higiene en base a los datos del animal.
         virtual void modificador_hambre_higiene();

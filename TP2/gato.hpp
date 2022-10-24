@@ -3,7 +3,7 @@
 
 #include "animal.hpp"
 
-class Gato : public animal{
+class Gato : public Animal{
     public:
         Gato(string nombre, int edad, string tamanio, char especie, string personalidad);
         void modificador_hambre_higiene();
