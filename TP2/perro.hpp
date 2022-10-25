@@ -3,13 +3,12 @@
 
 #include "animal.hpp"
 
-class Perro : public animal{
+class Perro : public Animal{
     public:
         Perro(string nombre, int edad, string tamanio, char especie, string personalidad);
         void modificador_hambre_higiene();
-        void mostrar();
-        void alimento();
-        void higiene();
+        void alimentar();
+        void higienizar();
 };
 
 #endif //PERRO_HPP
