@@ -49,3 +49,18 @@ void Reserva::rescatar_animal(){
         lista_animales->alta(animal, posicion);
     }   
 }
+
+
+void Reserva::listar_animales(){
+    lista_animales->iniciar();
+    while(lista_animales->hay_siguiente()){
+        Animal animal = lista_animales->siguiente();
+        cout<<"LISTA DE ANIMALES EN LA RESERVA"<<endl;
+        cout<<"Nombre: "<<animal.obtener_nombre()<<
+        "Edad: "<<animal.obtener_edad()<<
+        "Tamanio: "<<animal.obtener_tamanio()<<
+        "Especie: "<<animal.obtener_especie_full()<<
+        "Nivel de hambre: "<<animal.obtener_hambre()<<
+        "Nivel de higiene: "<<animal.obtener_higiene()<<endl;
+    }
+}
