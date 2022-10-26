@@ -22,6 +22,27 @@ class Animal{
         //POST: Devuelve el nombre del animal.
         string obtener_nombre();
         //PRE: -
+        //POST: Devuelve la edad del animal.
+        int obtener_edad();
+        //PRE: -
+        //POST: Devuelve el tamanio del animal.
+        string obtener_tamanio();
+        //PRE: -
+        //POST: Devuelve la especie del animal.
+        char obtener_especie();
+        //PRE: -
+        //POST: Devuelve la especie del animal.
+        string obtener_especie_full();
+        //PRE: -
+        //POST: Devuelve la personalidad del animal.
+        string obtener_personalidad();
+        //PRE: -
+        //POST: Devuelve el hambre del animal.
+        int obtener_hambre();
+        //PRE: -
+        //POST: Devuelve la higiene del animal.
+        int obtener_higiene();
+        //PRE: -
         //POST: Modifica el hambre e higiene en base a los datos del animal.
         virtual void modificador_hambre_higiene();
         //PRE: -

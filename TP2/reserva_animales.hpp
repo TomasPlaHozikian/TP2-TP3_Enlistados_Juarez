@@ -1,7 +1,7 @@
 #ifndef RESERVA_ANIMALES_HPP
 #define RESERVA_ANIMALES_HPP
 
-#include "lista.h"
+#include "lista.hpp"
 
 class Reserva
 {
@@ -19,7 +19,7 @@ public:
     void rescatar_animal();
     //PRE: Debe existir el nombre del animal en la lista.
     //POST: Se muestra la informacion del animal buscado por el usuario.
-    void buscar_animal();
+    void buscar_animal(string nombre);
     //PRE: -
     /*POST: Muestra un menu con opciones (elegir individualmente, alimentar a todos, banar a todos y regresar al inicio)
     y ejecuta la opcion seleccionada por el usuario*/
