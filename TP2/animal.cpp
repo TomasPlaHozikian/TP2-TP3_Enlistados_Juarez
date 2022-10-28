@@ -1,4 +1,5 @@
 #include "animal.hpp"
+#include <string>
 
 string Animal::obtener_nombre(){
     return nombre;
