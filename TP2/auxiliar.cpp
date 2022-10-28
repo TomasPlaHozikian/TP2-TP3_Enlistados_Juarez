@@ -33,7 +33,7 @@ void cargar_lista(Lista* lista){
         getline(archivo_reserva, aux5);
         personalidad=correccion_mayusculas(aux5);
 
-        Animal* animal = new Animal(nombre,edad,tamanio,especie,personalidad);
+        Animal* animal = creador_animal(nombre, edad, tamanio, especie, personalidad);
         posicion = lista->obtener_cantidad() + 1;   
         lista->alta(animal, posicion);
     }

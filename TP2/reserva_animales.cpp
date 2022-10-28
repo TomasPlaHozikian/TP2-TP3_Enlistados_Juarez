@@ -44,8 +44,23 @@ void Reserva::rescatar_animal(){
         tamanio=pedir_tamanio();
         especie=pedir_especie();
         personalidad=pedir_personalidad();
-        animal = new Animal(nombre,edad,tamanio,especie,personalidad);
+        animal = creador_animal(nombre,edad,tamanio,especie,personalidad);
         posicion = lista_animales->obtener_cantidad() + 1;   
         lista_animales->alta(animal, posicion);
     }   
+}
+
+
+void Reserva::listar_animales(){
+    lista_animales->iniciar();
+    while(lista_animales->hay_siguiente()){
+        Animal animal = lista_animales->siguiente();
+        cout<<"LISTA DE ANIMALES EN LA RESERVA"<<endl;
+        cout<<"Nombre: "<<animal.obtener_nombre()<<
+        "Edad: "<<animal.obtener_edad()<<
+        "Tamanio: "<<animal.obtener_tamanio()<<
+        "Especie: "<<animal.obtener_especie_full()<<
+        "Nivel de hambre: "<<animal.obtener_hambre()<<
+        "Nivel de higiene: "<<animal.obtener_higiene()<<endl;
+    }
 }
