@@ -1,12 +1,48 @@
 #include "reserva_animales.hpp"
-#include "auxiliar.hpp"
 #include <string>
 #include <iostream>
 
 using namespace std;
 
 Reserva::Reserva(){
-    
+    lista_animales=new Lista();
+    cargar_lista_reserva();
+}
+
+Lista* Reserva::obtener_lista(){
+    return lista_animales;
+}
+
+void Reserva::cargar_lista_reserva(){
+    ifstream archivo_reserva(ARCHIVO_RESERVA);
+
+    if(!archivo_reserva.is_open()){
+        cout << "No se encontro el archivo \"" << ARCHIVO_RESERVA << "\", se creo el archivo" << endl;
+        archivo_reserva.open(ARCHIVO_RESERVA, ios::out);
+        archivo_reserva.close();
+        archivo_reserva.open(ARCHIVO_RESERVA, ios::in);
+    }
+
+    string nombre, tamanio, personalidad, aux1, aux2, aux3, aux4, aux5;
+    char especie;
+    int edad, posicion;
+
+    while (getline(archivo_reserva, aux1, ','))
+    {
+        nombre=correccion_mayusculas(aux1);
+        getline(archivo_reserva, aux2, ',');
+        edad=stoi(aux2);
+        getline(archivo_reserva, aux3, ',');
+        tamanio=correccion_mayusculas(aux3);
+        getline(archivo_reserva, aux4, ',');
+        especie=aux4[0];
+        getline(archivo_reserva, aux5);
+        personalidad=correccion_mayusculas(aux5);
+
+        Animal* animal = creador_animal(nombre, edad, tamanio, especie, personalidad);
+        posicion = lista_animales->obtener_cantidad() + 1;   
+        lista_animales->alta(animal, posicion);
+    }
 }
 
 void Reserva::rescatar_animal(){
@@ -44,22 +80,86 @@ void Reserva::rescatar_animal(){
         tamanio=pedir_tamanio();
         especie=pedir_especie();
         personalidad=pedir_personalidad();
-        animal = new Animal(nombre,edad,tamanio,especie,personalidad);
+        animal = creador_animal(nombre,edad,tamanio,especie,personalidad);
         posicion = lista_animales->obtener_cantidad() + 1;   
         lista_animales->alta(animal, posicion);
     }   
 }
 
+
 void Reserva::listar_animales(){
+    int i = 0;
+    lista_animales->iniciar();
+    cout<<"LISTA DE ANIMALES EN LA RESERVA"<<endl;
+    while(lista_animales->hay_siguiente()){
+        Animal* animal = lista_animales->siguiente();
+        cout<<i<<") Nombre: "<<animal->obtener_nombre()<<
+        "Edad: "<<animal->obtener_edad()<<
+        "Tamanio: "<<animal->obtener_tamanio()<<
+        "Especie: "<<animal->obtener_especie_full()<<
+        "Nivel de hambre: "<<animal->obtener_hambre()<<
+        "Nivel de higiene: "<<animal->obtener_higiene()<<
+        "Personalidad: "<<animal->obtener_personalidad()<<endl;
+        i++;
+    }
+}
+
+void Reserva::cuidar_animal_indivudal(){
+    int opcion_de_animal;
     lista_animales->iniciar();
     while(lista_animales->hay_siguiente()){
-        Animal animal = lista_animales->siguiente();
-        cout<<"LISTA DE ANIMALES EN LA RESERVA"<<endl;
-        cout<<"Nombre: "<<animal.obtener_nombre()<<
-        "Edad: "<<animal.obtener_edad()<<
-        "Tamanio: "<<animal.obtener_tamanio()<<
-        "Especie: "<<animal.obtener_especie_full()<<
-        "Nivel de hambre: "<<animal.obtener_hambre()<<
-        "Nivel de higiene: "<<animal.obtener_higiene()<<endl;
+        Animal* animal = lista_animales->siguiente();
+        animal->mostrar();
+        cout<<"Seleccione opcion de cuidado: "<<endl
+        <<"1) Baniar"<<endl<<"2) Alimentar"<<endl<<"3) Saltear"<<endl;
+        cin>>opcion_de_animal;
+        switch(opcion_de_animal){
+            case(1):
+                animal->higienizar();
+                break;
+            case(2):                    
+                animal->alimentar();
+                break;
+            case(3):
+                cout<<"Se salteo al animal"<<endl;
+                break;
+            }
     }
+}
+
+void Reserva::alimentar_animales(){
+    lista_animales->iniciar();
+    while(lista_animales->hay_siguiente()){
+        lista_animales->siguiente()->alimentar();
+    }
+}
+
+void Reserva::higienizar_animales(){
+    lista_animales->iniciar();
+    while(lista_animales->hay_siguiente()){
+        lista_animales->siguiente()->higienizar();
+    }
+}
+
+void Reserva::cuidar_animales(){
+    int opcion = 0;
+    while(opcion != 4){
+        cout<<"Eliga opcion: "<<endl
+        <<"1) Elegir individualmente"<<endl
+        <<"2) Alimentar a todos"<<endl
+        <<"3) Baniar a todos"<<endl
+        <<"4) Regresar a inicio"<<endl;
+        cin>>opcion;
+        switch(opcion){
+            case(1):
+                cuidar_animal_indivudal();
+                break;
+            case(2):
+                alimentar_animales();
+                break;
+            case(3):
+                higienizar_animales();
+                break;
+            }
+        }
 }

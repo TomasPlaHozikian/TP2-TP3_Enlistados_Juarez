@@ -19,7 +19,8 @@ void Gato::alimentar(){
     cout<<nombre<<" comio atun."<<endl;
 }
 
-void Gato::higienizar(){//SACAR?
+void Gato::higienizar(){
     higiene = 100;
+    cout<<nombre<<" no requiere ducha."<<endl;
     }
 

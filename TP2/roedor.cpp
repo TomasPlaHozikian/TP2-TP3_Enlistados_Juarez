@@ -21,5 +21,6 @@ void Roedor::alimentar(){
 
 void Roedor::higienizar(){
     higiene = 100;
+    cout<<nombre<<" no requiere ducha."<<endl;
     }
 

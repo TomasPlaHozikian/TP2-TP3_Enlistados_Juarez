@@ -63,8 +63,8 @@ bool Lista::hay_siguiente(){
     return actual != 0;
 }
 
-Dato Lista::siguiente(){
-    Dato dato = actual->obtener_dato();
+Dato* Lista::siguiente(){
+    Dato* dato = actual->obtener_dato();
     actual = actual->obtener_siguiente();
     return dato;
 }
