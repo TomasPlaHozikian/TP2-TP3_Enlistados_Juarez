@@ -3,13 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include "perro.hpp"
-#include "caballo.hpp"
-#include "conejo.hpp"
-#include "erizo.hpp"
-#include "gato.hpp"
-#include "lagartija.hpp"
-#include "roedor.hpp"
 
 using namespace std;
 
@@ -69,9 +62,5 @@ class Animal{
         //POST: Devuelve un float que sera usado como multiplicador para reducir la higiene en base a personalidad.
         int modificador_higiene_personalidad();
 };
-
-//PRE: El animal debe ser uno de los posibles.
-//POST: Crea el animal correspondiente y lo devuelve para cargarlo a la lista.
-Animal* creador_animal(string nombre, int edad, string tamanio, char especie, string personalidad);
 
 #endif //ANIMAL_HPP

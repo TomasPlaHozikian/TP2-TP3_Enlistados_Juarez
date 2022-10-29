@@ -2,39 +2,6 @@
 
 using namespace std;
 
-void cargar_lista_reserva(Reserva* reserva){
-    Lista* lista=reserva->obtener_lista();
-    ifstream archivo_reserva(ARCHIVO_RESERVA);
-
-    if(!archivo_reserva.is_open()){
-        cout << "No se encontro el archivo \"" << ARCHIVO_RESERVA << "\", se creo el archivo" << endl;
-        archivo_reserva.open(ARCHIVO_RESERVA, ios::out);
-        archivo_reserva.close();
-        archivo_reserva.open(ARCHIVO_RESERVA, ios::in);
-    }
-
-    string nombre, tamanio, personalidad, aux1, aux2, aux3, aux4, aux5;
-    char especie;
-    int edad, posicion;
-
-    while (getline(archivo_reserva, aux1, ','))
-    {
-        nombre=correccion_mayusculas(aux1);
-        getline(archivo_reserva, aux2, ',');
-        edad=stoi(aux2);
-        getline(archivo_reserva, aux3, ',');
-        tamanio=correccion_mayusculas(aux3);
-        getline(archivo_reserva, aux4, ',');
-        especie=aux4[0];
-        getline(archivo_reserva, aux5);
-        personalidad=correccion_mayusculas(aux5);
-
-        Animal* animal = creador_animal(nombre, edad, tamanio, especie, personalidad);
-        posicion = lista->obtener_cantidad() + 1;   
-        lista->alta(animal, posicion);
-    }
-}
-
 string correccion_mayusculas(string palabra){
     string resultado="";
     char letra_correjida=toupper(palabra[0]);
@@ -222,4 +189,30 @@ bool existe_animal(Lista* lista, string nombre){
     }
 
     return resultado;
+}
+
+Animal* creador_animal(string nombre, int edad, string tamanio, char especie, string personalidad){
+    Animal* animal;
+    if(especie=='P'){
+        animal = new Perro(nombre, edad, tamanio, especie, personalidad);
+    }
+    else if(especie=='G'){
+        animal = new Gato(nombre, edad, tamanio, especie, personalidad);
+    }
+    else if(especie=='C'){
+        animal = new Caballo(nombre, edad, tamanio, especie, personalidad);
+    }
+    else if(especie=='R'){
+        animal = new Roedor(nombre, edad, tamanio, especie, personalidad);
+    }
+    else if(especie=='O'){
+        animal = new Conejo(nombre, edad, tamanio, especie, personalidad);
+    }
+    else if(especie=='E'){
+        animal = new Erizo(nombre, edad, tamanio, especie, personalidad);
+    }
+    else if(especie=='L'){
+        animal = new Lagartija(nombre, edad, tamanio, especie, personalidad);
+    }
+    return animal;
 }

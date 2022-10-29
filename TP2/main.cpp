@@ -6,11 +6,9 @@ using namespace std;
 
 int main()
 {
-    Lista* lista = new Lista();
-    Reserva* reserva = new Reserva(lista);
-    cargar_lista_reserva(reserva);
-    mostrar_menu();
-    int opcion=pedir_opcion();
-    ejecutar_opcion(reserva,opcion);
+    Reserva* reserva = new Reserva();
+    mostrar_menu_principal();
+    int opcion=pedir_opcion(CANTIDAD_OPCIONES_MENU_PRINCIPAL);
+    ejecutar_opcion_principal(reserva,opcion);
     return 0;
 }
