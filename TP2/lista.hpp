@@ -18,7 +18,7 @@ class Lista{
         ~Lista();
         //ITERADOR
         bool hay_siguiente();
-        Dato siguiente();
+        Dato* siguiente();
         void iniciar(); //cursor al principio
     private:
         Nodo* obtener_nodo(int pos);//devueve puntero a nodo donde se indique

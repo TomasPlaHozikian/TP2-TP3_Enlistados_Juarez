@@ -1,15 +1,16 @@
 #ifndef AUXILIAR_HPP
 #define AUXILIAR_HPP
 
-#include <string>
-#include "lista.hpp"
-#include "animal.hpp"
+#include <fstream>
+#include "reserva_animales.hpp"
 
 using namespace std;
 
+string ARCHIVO_RESERVA = "Reserva.csv";
+
 //PRE: -
 //POST: Carga la lista con todos los animales del archivo.
-void cargar_lista(Lista* lista);
+void cargar_lista_reserva(Reserva* reserva);
 //PRE: -
 //POST: Convierte un string a minusculas con la primera en mayusculas para hacer mas facil su manejo en el programa.
 string correccion_mayusculas(string palabra);

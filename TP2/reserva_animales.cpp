@@ -1,12 +1,15 @@
 #include "reserva_animales.hpp"
-#include "auxiliar.hpp"
 #include <string>
 #include <iostream>
 
 using namespace std;
 
-Reserva::Reserva(){
-    
+Reserva::Reserva(Lista* lista){
+    lista_animales=lista;
+}
+
+Lista* Reserva::obtener_lista(){
+    return lista_animales;
 }
 
 void Reserva::rescatar_animal(){
@@ -54,13 +57,13 @@ void Reserva::rescatar_animal(){
 void Reserva::listar_animales(){
     lista_animales->iniciar();
     while(lista_animales->hay_siguiente()){
-        Animal animal = lista_animales->siguiente();
+        Animal* animal = lista_animales->siguiente();
         cout<<"LISTA DE ANIMALES EN LA RESERVA"<<endl;
-        cout<<"Nombre: "<<animal.obtener_nombre()<<
-        "Edad: "<<animal.obtener_edad()<<
-        "Tamanio: "<<animal.obtener_tamanio()<<
-        "Especie: "<<animal.obtener_especie_full()<<
-        "Nivel de hambre: "<<animal.obtener_hambre()<<
-        "Nivel de higiene: "<<animal.obtener_higiene()<<endl;
+        cout<<"Nombre: "<<animal->obtener_nombre()<<
+        "Edad: "<<animal->obtener_edad()<<
+        "Tamanio: "<<animal->obtener_tamanio()<<
+        "Especie: "<<animal->obtener_especie_full()<<
+        "Nivel de hambre: "<<animal->obtener_hambre()<<
+        "Nivel de higiene: "<<animal->obtener_higiene()<<endl;
     }
 }

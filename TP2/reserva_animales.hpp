@@ -2,6 +2,7 @@
 #define RESERVA_ANIMALES_HPP
 
 #include "lista.hpp"
+#include "auxiliar.hpp"
 
 class Reserva
 {
@@ -9,8 +10,11 @@ private:
     Lista* lista_animales;
 public:
     //PRE: -
-    //POST: Se agregan los animales y sus datos en forma de clases a una lista.
-    Reserva();
+    //POST: Se agrega la lista de los animales y sus datos en forma de clases.
+    Reserva(Lista* lista);
+    //PRE: -
+    //POST: Devuelve la lista de animales.
+    Lista* obtener_lista();
     //PRE: -
     //POST: Imprime todos los animales con sus datos y se modifica el hambre e higiene de los mismos.
     void listar_animales();

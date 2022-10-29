@@ -1,13 +1,9 @@
 #include "auxiliar.hpp"
-#include <fstream>
-#include <iostream>
-#include <string>
 
 using namespace std;
 
-string ARCHIVO_RESERVA = "Reserva.csv";
-
-void cargar_lista(Lista* lista){
+void cargar_lista_reserva(Reserva* reserva){
+    Lista* lista=reserva->obtener_lista();
     ifstream archivo_reserva(ARCHIVO_RESERVA);
 
     if(!archivo_reserva.is_open()){
