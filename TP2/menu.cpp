@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void mostrar_menu(){
+void mostrar_menu_principal(){
     cout << endl << endl << endl;
     cout << "MENU" << endl
     << '\t' << "1. Listar animales rescatados." << endl
@@ -13,12 +13,12 @@ void mostrar_menu(){
     << '\t' << "6. Guardar y salir." << endl;
 }
 
-int pedir_opcion(){
+int pedir_opcion(int cantidad_opciones){
     int opcion_elegida;
     cout << "Ingrese el numero de la opcion elegida: ";
     cin >> opcion_elegida;
 
-    while(opcion_elegida < 1 || opcion_elegida > 6){
+    while(opcion_elegida < 1 || opcion_elegida > cantidad_opciones){
         cout << "La opcion elegida no es una opcion valida, por favor ingrese otra opcion: ";
         cin >> opcion_elegida;
     }
@@ -26,7 +26,7 @@ int pedir_opcion(){
     return opcion_elegida;
 }
 
-void ejecutar_opcion(Reserva* reserva, int opcion){
+void ejecutar_opcion_principal(Reserva* reserva, int opcion){
     switch (opcion)
     {
     case LISTAR_ANIMALES:
@@ -51,6 +51,36 @@ void ejecutar_opcion(Reserva* reserva, int opcion){
     
     case SALIR:
         
+        break;
+    }
+}
+
+void mostrar_menu_cuidar(){
+    cout << endl << endl << endl;
+    cout << "MENU" << endl
+    << '\t' << "1. Elegir individualmente." << endl
+    << '\t' << "2. Alimentar a todos." << endl
+    << '\t' << "3. Baniar a todos." << endl
+    << '\t' << "4. Volver al menu principal." << endl;
+}
+
+void ejecutar_opcion_cuidar(Reserva* reserva, int opcion){
+    switch (opcion)
+    {
+    case ELEGIR_INDIVIDUALMENTE:
+        
+        break;
+    
+    case ALIMENTAR_TODOS:
+        
+        break;
+    
+    case BANIAR_TODOS:
+        
+        break;
+
+    case VOLVER_AL_PRINCIPAL:
+            
         break;
     }
 }

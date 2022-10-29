@@ -5,7 +5,7 @@
 
 using namespace std;
 
-enum OpcionMenu {
+enum OpcionMenuPrincipal {
     LISTAR_ANIMALES = 1,
     RESCATAR_ANIMAL,
     BUSCAR_ANIMAL,
@@ -14,17 +14,35 @@ enum OpcionMenu {
     SALIR
 };
 
-//Precondiciones:
-//Postcondiciones: Muestra el menu en la consola.
-void mostrar_menu();
+enum OpcionMenuCuidar {
+    ELEGIR_INDIVIDUALMENTE = 1,
+    ALIMENTAR_TODOS,
+    BANIAR_TODOS,
+    VOLVER_AL_PRINCIPAL
+};
 
-//Precondiciones:
-//Postcondiciones: Devuelve una opcion valida.
-int pedir_opcion();
+int CANTIDAD_OPCIONES_MENU_PRINCIPAL=6;
+int CANTIDAD_OPCIONES_MENU_CUIDAR=4;
 
-//Realiza la opcion ingresada por el usuario.
-//Precondiciones: Las opciones deben estar entre 1 y 7.
-//Postcondiciones: Ejecuta los metodos necesarios para realizar la tarea.
-void ejecutar_opcion(Reserva* reserva, int opcion);
+//PRE: -
+//POST: Muestra el menu en la consola.
+void mostrar_menu_principal();
+
+//PRE: -
+//POST: Devuelve una opcion valida.
+int pedir_opcion(int cantidad_opciones);
+
+//PRE: Las opciones deben estar entre 1 y 7.
+//POST: Ejecuta los metodos necesarios para realizar la tarea.
+void ejecutar_opcion_principal(Reserva* reserva, int opcion);
+
+//PRE: -
+//POST: Muestra el menu de cuidado en la consola.
+void mostrar_menu_cuidar();
+
+//PRE: Las opciones deben estar entre 1 y 4.
+//POST: Ejecuta los metodos necesarios para realizar la tarea.
+void ejecutar_opcion_cuidar(Reserva* reserva, int opcion);
+
 
 #endif

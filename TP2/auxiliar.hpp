@@ -1,16 +1,19 @@
 #ifndef AUXILIAR_HPP
 #define AUXILIAR_HPP
 
-#include <fstream>
-#include "reserva_animales.hpp"
+#include "lista.hpp"
+#include "perro.hpp"
+#include "caballo.hpp"
+#include "conejo.hpp"
+#include "erizo.hpp"
+#include "gato.hpp"
+#include "lagartija.hpp"
+#include "roedor.hpp"
 
 using namespace std;
 
-string ARCHIVO_RESERVA = "Reserva.csv";
 
-//PRE: -
-//POST: Carga la lista con todos los animales del archivo.
-void cargar_lista_reserva(Reserva* reserva);
+
 //PRE: -
 //POST: Convierte un string a minusculas con la primera en mayusculas para hacer mas facil su manejo en el programa.
 string correccion_mayusculas(string palabra);
@@ -38,5 +41,8 @@ void mostrar_personalidades();
 //PRE: -
 //POST: Verifica si existe un animal ya guardado con ese nombre, si existe el animal devuelve true.
 bool existe_animal(Lista* lista, string nombre);
+//PRE: El animal debe ser uno de los posibles.
+//POST: Crea el animal correspondiente y lo devuelve para cargarlo a la lista.
+Animal* creador_animal(string nombre, int edad, string tamanio, char especie, string personalidad);
 
 #endif
