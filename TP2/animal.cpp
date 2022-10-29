@@ -42,8 +42,11 @@ int Animal::obtener_higiene(){
 }
 
 void Animal::mostrar(){
-    cout<<"Nombre: "<<nombre<<"Edad: "<<edad<<"Tamanio: "<<tamanio<<"Especie: "<<especie<<
-    "Personalidad: "<<personalidad<<endl;
+    cout<<"Nombre: "<<nombre
+    <<"Edad: "<<edad
+    <<"Tamanio: "<<tamanio
+    <<"Especie: "<<especie
+    <<"Personalidad: "<<personalidad<<endl;
 }
 
 int Animal::modificador_alimento_personalidad(){

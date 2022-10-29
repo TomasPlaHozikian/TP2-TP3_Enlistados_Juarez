@@ -88,15 +88,78 @@ void Reserva::rescatar_animal(){
 
 
 void Reserva::listar_animales(){
+    int i = 0;
     lista_animales->iniciar();
+    cout<<"LISTA DE ANIMALES EN LA RESERVA"<<endl;
     while(lista_animales->hay_siguiente()){
         Animal* animal = lista_animales->siguiente();
-        cout<<"LISTA DE ANIMALES EN LA RESERVA"<<endl;
-        cout<<"Nombre: "<<animal->obtener_nombre()<<
+        cout<<i<<") Nombre: "<<animal->obtener_nombre()<<
         "Edad: "<<animal->obtener_edad()<<
         "Tamanio: "<<animal->obtener_tamanio()<<
         "Especie: "<<animal->obtener_especie_full()<<
         "Nivel de hambre: "<<animal->obtener_hambre()<<
-        "Nivel de higiene: "<<animal->obtener_higiene()<<endl;
+        "Nivel de higiene: "<<animal->obtener_higiene()<<
+        "Personalidad: "<<animal->obtener_personalidad()<<endl;
+        i++;
     }
+}
+
+void Reserva::cuidar_animal_indivudal(){
+    int opcion_de_animal;
+    lista_animales->iniciar();
+    while(lista_animales->hay_siguiente()){
+        Animal* animal = lista_animales->siguiente();
+        animal->mostrar();
+        cout<<"Seleccione opcion de cuidado: "<<endl
+        <<"1) Baniar"<<endl<<"2) Alimentar"<<endl<<"3) Saltear"<<endl;
+        cin>>opcion_de_animal;
+        switch(opcion_de_animal){
+            case(1):
+                animal->higienizar();
+                break;
+            case(2):                    
+                animal->alimentar();
+                break;
+            case(3):
+                cout<<"Se salteo al animal"<<endl;
+                break;
+            }
+    }
+}
+
+void Reserva::alimentar_animales(){
+    lista_animales->iniciar();
+    while(lista_animales->hay_siguiente()){
+        lista_animales->siguiente()->alimentar();
+    }
+}
+
+void Reserva::higienizar_animales(){
+    lista_animales->iniciar();
+    while(lista_animales->hay_siguiente()){
+        lista_animales->siguiente()->higienizar();
+    }
+}
+
+void Reserva::cuidar_animales(){
+    int opcion = 0;
+    while(opcion != 4){
+        cout<<"Eliga opcion: "<<endl
+        <<"1) Elegir individualmente"<<endl
+        <<"2) Alimentar a todos"<<endl
+        <<"3) Baniar a todos"<<endl
+        <<"4) Regresar a inicio"<<endl;
+        cin>>opcion;
+        switch(opcion){
+            case(1):
+                cuidar_animal_indivudal();
+                break;
+            case(2):
+                alimentar_animales();
+                break;
+            case(3):
+                higienizar_animales();
+                break;
+            }
+        }
 }

@@ -42,7 +42,7 @@ void ejecutar_opcion_principal(Reserva* reserva, int opcion){
         break;
 
     case CUIDAR_ANIMAL:
-            
+        reserva->cuidar_animales();
         break;
 
     case ADOPTAR_ANIMAL:
