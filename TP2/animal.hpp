@@ -2,6 +2,7 @@
 #define ANIMAL_HPP
 
 #include <iostream>
+#include <string>
 #include "perro.hpp"
 #include "caballo.hpp"
 #include "conejo.hpp"
@@ -9,7 +10,7 @@
 #include "gato.hpp"
 #include "lagartija.hpp"
 #include "roedor.hpp"
-#include <string>
+
 using namespace std;
 
 class Animal{
