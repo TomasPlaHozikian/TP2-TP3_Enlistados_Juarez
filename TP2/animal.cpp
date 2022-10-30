@@ -42,8 +42,11 @@ int Animal::obtener_higiene(){
 }
 
 void Animal::mostrar(){
-    cout<<"Nombre: "<<nombre<<"Edad: "<<edad<<"Tamanio: "<<tamanio<<"Especie: "<<especie<<
-    "Personalidad: "<<personalidad<<endl;
+    cout<<"Nombre: "<<nombre
+    <<"Edad: "<<edad
+    <<"Tamanio: "<<tamanio
+    <<"Especie: "<<especie
+    <<"Personalidad: "<<personalidad<<endl;
 }
 
 int Animal::modificador_alimento_personalidad(){
@@ -58,30 +61,4 @@ int Animal::modificador_higiene_personalidad(){
     if(this->personalidad == "Sociable") modificador = 0.5;
     if(this->personalidad == "Travieso") modificador = 2;
     return modificador;
-}
-
-Animal* creador_animal(string nombre, int edad, string tamanio, char especie, string personalidad){
-    Animal* animal;
-    if(especie=='P'){
-        animal = new Perro(nombre, edad, tamanio, especie, personalidad);
-    }
-    else if(especie=='G'){
-        animal = new Gato(nombre, edad, tamanio, especie, personalidad);
-    }
-    else if(especie=='C'){
-        animal = new Caballo(nombre, edad, tamanio, especie, personalidad);
-    }
-    else if(especie=='R'){
-        animal = new Roedor(nombre, edad, tamanio, especie, personalidad);
-    }
-    else if(especie=='O'){
-        animal = new Conejo(nombre, edad, tamanio, especie, personalidad);
-    }
-    else if(especie=='E'){
-        animal = new Erizo(nombre, edad, tamanio, especie, personalidad);
-    }
-    else if(especie=='L'){
-        animal = new Lagartija(nombre, edad, tamanio, especie, personalidad);
-    }
-    return animal;
 }
