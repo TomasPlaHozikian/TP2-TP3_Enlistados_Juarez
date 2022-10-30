@@ -199,7 +199,7 @@ void Reserva::adoptar_animal(){
             existe = existe_animal(lista_animales, nombre);
         }
 
-        obtener_posicion_animal(lista_animales, nombre, pos);
+        obtener_posicion_animal(lista_animales, nombre);
         lista_animales->baja(pos);
     }
 }
