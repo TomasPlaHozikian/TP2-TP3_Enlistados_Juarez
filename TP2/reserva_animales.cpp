@@ -163,3 +163,43 @@ void Reserva::cuidar_animales(){
             }
         }
 }
+
+void Reserva::adoptar_animal(){
+    int espacio_disponible, opcion_elegida, pos;
+    
+    cout << "Ingresar tamanio disponible para el animal en metros cuadrados: " << endl;
+    cin >> espacio_disponible;
+    
+    while (espacio_disponible <= 0){
+        cout << "El tamanio ingresado es invalido." << endl << "Ingresar tamanio disponible para el animal en metros cuadrados: " << endl;
+        cin >> espacio_disponible;
+    }
+    
+    mostrar_adopciones_posibles(espacio_disponible, lista_animales);
+
+    opcion_elegida = adoptar_o_cancelar();
+
+    if (opcion_elegida == 2){
+        cout << "Opcion cancelada, no se ha adoptado ningun animal."<< endl;
+    }
+
+    else{
+        string nombre, ingreso;
+        bool existe = false;
+
+        cout << "GENIAL! Ingrese el nombre del animal que desea adoptar: ";
+        getline(cin>>ws,ingreso);
+        nombre = correccion_mayusculas(ingreso);
+        existe = existe_animal(lista_animales, nombre);
+
+        while (!existe){
+            cout << "No se encontro un animal con ese nombre, por favor vuelva a intentarlo: ";
+            getline(cin>>ws,ingreso);
+            nombre = correccion_mayusculas(ingreso);
+            existe = existe_animal(lista_animales, nombre);
+        }
+
+        obtener_posicion_animal(lista_animales, nombre, pos);
+        lista_animales->baja(pos);
+    }
+}
