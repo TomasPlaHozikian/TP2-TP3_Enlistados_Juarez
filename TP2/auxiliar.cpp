@@ -260,9 +260,10 @@ void mostrar_adopciones_posibles(int espacio_disponible, Lista* lista_animales){
     }
 }
 
-int obtener_posicion_animal(Lista* lista, string nombre, int i){
+int obtener_posicion_animal(Lista* lista, string nombre){
     bool resultado=false;
     Animal* animal;
+    int i;
     int cantidad_animales=lista->obtener_cantidad(), i=1;
 
     while(resultado && i<=cantidad_animales){
