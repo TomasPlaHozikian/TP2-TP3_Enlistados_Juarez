@@ -27,7 +27,7 @@ public:
     void rescatar_animal();
     //PRE: Debe existir el nombre del animal en la lista.
     //POST: Se muestra la informacion del animal buscado por el usuario.
-    void buscar_animal(string nombre);
+    void buscar_animal();
     //PRE: -
     //POST: Solicita al usuario opciones de cuidado para un animal de forma individual.
     void cuidar_animal_indivudal();
