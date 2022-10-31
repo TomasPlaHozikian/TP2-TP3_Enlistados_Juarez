@@ -1,4 +1,4 @@
-#include "lista.h"
+#include "lista.hpp"
 
 Lista::Lista(){
     primero = 0;
@@ -14,7 +14,7 @@ Nodo* Lista::obtener_nodo(int pos){
     return aux;
 }
 
-void Lista::alta(Dato d, int pos){
+void Lista::alta(Dato* d, int pos){
     Nodo* nuevo = new Nodo(d);
     Nodo* siguiente = primero;
     if(pos == 1){
@@ -30,7 +30,7 @@ void Lista::alta(Dato d, int pos){
     }
 
 
-Dato Lista::consulta(int pos){
+Dato* Lista::consulta(int pos){
     Nodo* nodo = obtener_nodo(pos);
     return nodo->obtener_dato();
 }
@@ -63,8 +63,8 @@ bool Lista::hay_siguiente(){
     return actual != 0;
 }
 
-Dato Lista::siguiente(){
-    Dato dato = actual->obtener_dato();
+Dato* Lista::siguiente(){
+    Dato* dato = actual->obtener_dato();
     actual = actual->obtener_siguiente();
     return dato;
 }

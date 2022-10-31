@@ -1,19 +1,14 @@
 #include <iostream>
-#include "lista.h"
+#include "reserva_animales.hpp"
+#include "menu.hpp"
 
 using namespace std;
 
 int main()
 {
-    Lista p;
-    p.alta('H', 1);
-    p.alta('O', 2);
-    p.alta('L', 3);
-    p.alta('A', 4);
-    cout<<"recorrido con cursor: " <<endl;
-    p.iniciar();
-    while(p.hay_siguiente()){
-        cout<<p.siguiente()<<endl;
-    }
+    Reserva* reserva = new Reserva();
+    mostrar_menu_principal();
+    int opcion = pedir_opcion(CANTIDAD_OPCIONES_MENU_PRINCIPAL);
+    ejecutar_opcion_principal(reserva,opcion);
     return 0;
 }

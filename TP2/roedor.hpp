@@ -3,13 +3,12 @@
 
 #include "animal.hpp"
 
-class Roedor : public animal{
+class Roedor : public Animal{
     public:
         Roedor(string nombre, int edad, string tamanio, char especie, string personalidad);
         void modificador_hambre_higiene();
-        void mostrar();
-        void alimento();
-        void higiene();
+        void alimentar();
+        void higienizar();
 };
 
 #endif //ROEDOR_HPP
