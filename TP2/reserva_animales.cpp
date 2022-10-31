@@ -14,13 +14,13 @@ Lista* Reserva::obtener_lista(){
 }
 
 void Reserva::cargar_lista_reserva(){
-    ifstream archivo_reserva(ARCHIVO_RESERVA);
+    ifstream archivo_reserva("Reserva.csv");
 
     if(!archivo_reserva.is_open()){
-        cout << "No se encontro el archivo \"" << ARCHIVO_RESERVA << "\", se creo el archivo" << endl;
-        archivo_reserva.open(ARCHIVO_RESERVA, ios::out);
+        cout << "No se encontro el archivo \"" << "Reserva.csv" << "\", se creo el archivo" << endl;
+        archivo_reserva.open("Reserva.csv", ios::out);
         archivo_reserva.close();
-        archivo_reserva.open(ARCHIVO_RESERVA, ios::in);
+        archivo_reserva.open("Reserva.csv", ios::in);
     }
 
     string nombre, tamanio, personalidad, aux1, aux2, aux3, aux4, aux5;
@@ -61,7 +61,7 @@ void Reserva::rescatar_animal(){
     while (ya_existe && !terminar)
     {
         cout<<"Ya existe un animal rescatado con ese nombre:"<<endl;
-        //buscar_animal(nombre);
+        mostrar_animal_por_nombre(nombre);
         cout<<endl<<"Si quiere ingrese otro nombre, en caso contrario ingrese 1: ";
         getline(cin>>ws,ingreso);
         nombre = correccion_mayusculas(ingreso);
@@ -123,13 +123,18 @@ void Reserva::buscar_animal(){
 
         ya_existe = existe_animal(lista_animales, nombre);
     }
+    mostrar_animal_por_nombre(nombre);
 
+}
+
+void Reserva::mostrar_animal_por_nombre(string nombre){
+    int pos;
     pos = obtener_posicion_animal(lista_animales, nombre);
-    
     lista_animales->consulta(pos)->mostrar();
 }
 
-void Reserva::cuidar_animal_indivudal(){
+
+void Reserva::cuidar_animal_individual(){
     int opcion_de_animal;
     lista_animales->iniciar();
     while(lista_animales->hay_siguiente()){
@@ -177,7 +182,7 @@ void Reserva::cuidar_animales(){
         cin>>opcion;
         switch(opcion){
             case(1):
-                cuidar_animal_indivudal();
+                cuidar_animal_individual();
                 break;
             case(2):
                 alimentar_animales();
