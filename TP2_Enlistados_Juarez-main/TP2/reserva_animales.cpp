@@ -61,7 +61,7 @@ void Reserva::rescatar_animal(){
     while (ya_existe && !terminar)
     {
         cout<<"Ya existe un animal rescatado con ese nombre:"<<endl;
-        //buscar_animal(nombre);
+        buscar_animal(nombre);
         cout<<endl<<"Si quiere ingrese otro nombre, en caso contrario ingrese 1: ";
         getline(cin>>ws,ingreso);
         nombre = correccion_mayusculas(ingreso);
@@ -103,30 +103,30 @@ void Reserva::listar_animales(){
         i++;
     }
 }
-void Reserva::buscar_animal(){
+
+void Reserva::buscar_animal(string nombre){
     Animal* animal;
-    int pos, i = 0;
-    string ingreso, nombre;
+    int pos;
+    string ingreso;
     bool ya_existe=false;
 
     cout<<"Ingrese el nombre del animal: ";
-    cin>>nombre;
+    getline(cin>>ws,ingreso);
+    nombre = correccion_mayusculas(ingreso);
 
-    nombre = correccion_mayusculas(nombre); 
-
-    ya_existe = existe_animal(lista_animales, nombre);
+    ya_existe = existe_animal(lista_animales,nombre);
 
     while(!ya_existe){
         cout << "El nombre no existe." << endl << "Ingrese otro nombre: " << endl;
-        cin>>nombre; 
-        nombre = correccion_mayusculas(nombre);
+        getline(cin>>ws,ingreso);
+        nombre = correccion_mayusculas(ingreso);
 
-        ya_existe = existe_animal(lista_animales, nombre);
+        ya_existe = existe_animal(lista_animales,nombre);
     }
 
     pos = obtener_posicion_animal(lista_animales, nombre);
+    animal -> mostrar();
     
-    lista_animales->consulta(pos)->mostrar();
 }
 
 void Reserva::cuidar_animal_indivudal(){

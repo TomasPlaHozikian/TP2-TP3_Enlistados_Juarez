@@ -8,7 +8,7 @@ int main()
 {
     Reserva* reserva = new Reserva();
     mostrar_menu_principal();
-    int opcion = pedir_opcion(CANTIDAD_OPCIONES_MENU_PRINCIPAL);
+    int opcion=pedir_opcion(CANTIDAD_OPCIONES_MENU_PRINCIPAL);
     ejecutar_opcion_principal(reserva,opcion);
     return 0;
 }

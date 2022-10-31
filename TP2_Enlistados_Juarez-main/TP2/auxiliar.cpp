@@ -263,8 +263,8 @@ void mostrar_adopciones_posibles(int espacio_disponible, Lista* lista_animales){
 int obtener_posicion_animal(Lista* lista, string nombre){
     bool resultado=false;
     Animal* animal;
-    int i = 1;
-    int cantidad_animales=lista->obtener_cantidad();
+    int i;
+    int cantidad_animales=lista->obtener_cantidad(), i=1;
 
     while(resultado && i<=cantidad_animales){
         animal=lista->consulta(i);
