@@ -31,26 +31,27 @@ void ejecutar_opcion_principal(Reserva* reserva, int opcion){
     {
     case LISTAR_ANIMALES:
         reserva->listar_animales();
+        reserva->modificador_hambre_higiene_animales();
         break;
     
     case RESCATAR_ANIMAL:
         reserva->rescatar_animal();
+        reserva->modificador_hambre_higiene_animales();
         break;
     
     case BUSCAR_ANIMAL:
         reserva->buscar_animal();
+        reserva->modificador_hambre_higiene_animales();
         break;
 
     case CUIDAR_ANIMAL:
         reserva->cuidar_animales();
+        reserva->modificador_hambre_higiene_animales();
         break;
 
     case ADOPTAR_ANIMAL:
         reserva->adoptar_animal();
-        break;
-    
-    case SALIR:
-        
+        reserva->modificador_hambre_higiene_animales();
         break;
     }
 }

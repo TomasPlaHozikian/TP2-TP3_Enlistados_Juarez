@@ -7,6 +7,8 @@ Erizo::Erizo(string nombre, int edad, string tamanio, char especie, string perso
     this->tamanio = tamanio;
     this->especie = especie;
     this->personalidad = personalidad;
+    hambre = 0;
+    higiene = 100;
 }
 
 

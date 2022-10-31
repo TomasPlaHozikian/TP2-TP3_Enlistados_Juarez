@@ -7,6 +7,8 @@ Lagartija::Lagartija(string nombre, int edad, string tamanio, char especie, stri
     this->tamanio = tamanio;
     this->especie = especie;
     this->personalidad = personalidad;
+    hambre = 0;
+    higiene = 100;
 }
 
 

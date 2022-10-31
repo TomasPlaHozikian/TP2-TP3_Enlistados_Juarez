@@ -48,6 +48,9 @@ public:
     //      los animales dentro del parametro para que el usuario seleccione un animal y si desea adoptarlo se remueve de la lista.
     void adoptar_animal();
     //PRE: -
+    //POST: Modifica la higiene y hambre de los animales luego de una funcion.
+    void modificador_hambre_higiene_animales();
+    //PRE: -
     //POST: Se guarda el archivo animales.csv con las modificaciones realizadas y se cierra el programa.
     void guardar_y_salir();
     //PRE: -

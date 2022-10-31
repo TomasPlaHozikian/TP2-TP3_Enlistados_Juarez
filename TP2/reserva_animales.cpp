@@ -43,6 +43,7 @@ void Reserva::cargar_lista_reserva(){
         posicion = lista_animales->obtener_cantidad() + 1;   
         lista_animales->alta(animal, posicion);
     }
+    archivo_reserva.close();
 }
 
 void Reserva::rescatar_animal(){
@@ -110,9 +111,10 @@ void Reserva::buscar_animal(){
     bool ya_existe=false;
 
     cout<<"Ingrese el nombre del animal: ";
-    cin>>nombre;
+    getline(cin>>ws, ingreso);
 
-    nombre = correccion_mayusculas(nombre); 
+
+    nombre = correccion_mayusculas(ingreso); 
 
     ya_existe = existe_animal(lista_animales, nombre);
 
@@ -216,7 +218,7 @@ void Reserva::adoptar_animal(){
     else{
         string nombre, ingreso;
         bool existe = false;
-
+        int pos;
         cout << "GENIAL! Ingrese el nombre del animal que desea adoptar: ";
         getline(cin>>ws,ingreso);
         nombre = correccion_mayusculas(ingreso);
@@ -229,7 +231,34 @@ void Reserva::adoptar_animal(){
             existe = existe_animal(lista_animales, nombre);
         }
 
-        obtener_posicion_animal(lista_animales, nombre);
+        pos = obtener_posicion_animal(lista_animales, nombre);
         lista_animales->baja(pos);
     }
+}
+
+void Reserva::modificador_hambre_higiene_animales(){
+    lista_animales->iniciar();
+    while(lista_animales->hay_siguiente()){
+        Animal* animal = lista_animales->siguiente();
+        animal->modificador_hambre_higiene();
+    }
+}
+
+void Reserva::guardar_y_salir(){
+    ofstream archivo("Reserva.csv");
+
+    lista_animales->iniciar();
+    while(lista_animales->hay_siguiente()){
+        Animal* animal = lista_animales->siguiente();
+        archivo<<animal->obtener_nombre()<<','
+        <<animal->obtener_edad()<<','
+        <<animal->obtener_tamanio()<<','
+        <<animal->obtener_especie()<<','
+        <<animal->obtener_personalidad()<<','<<endl;
+    }
+    archivo.close();
+}
+
+Reserva::~Reserva(){
+    lista_animales->~Lista();
 }
