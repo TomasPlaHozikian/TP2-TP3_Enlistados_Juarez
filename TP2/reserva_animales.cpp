@@ -177,7 +177,7 @@ void Reserva::cuidar_animales(){
         cin>>opcion;
         switch(opcion){
             case(1):
-                cuidar_animal_indivudal();
+                cuidar_animal_individual();
                 break;
             case(2):
                 alimentar_animales();
