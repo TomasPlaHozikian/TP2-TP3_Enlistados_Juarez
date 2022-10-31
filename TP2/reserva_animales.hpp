@@ -4,7 +4,6 @@
 #include <fstream>
 #include "auxiliar.hpp"
 
-string ARCHIVO_RESERVA = "Reserva.csv";
 
 class Reserva{
 private:
@@ -26,6 +25,9 @@ public:
     //POST: Se le piden los datos del animal al usuario, se validan y se agrega el animal a la lista.
     void rescatar_animal();
     //PRE: Debe existir el nombre del animal en la lista.
+    //POST: Se muestra la informacion del animal ingresado por parametro.
+    void mostrar_animal_por_nombre(string nombre);
+    //PRE: -
     //POST: Se muestra la informacion del animal buscado por el usuario.
     void buscar_animal();
     //PRE: -

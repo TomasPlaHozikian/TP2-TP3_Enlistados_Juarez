@@ -38,7 +38,7 @@ void ejecutar_opcion_principal(Reserva* reserva, int opcion){
         break;
     
     case BUSCAR_ANIMAL:
-        
+        reserva->buscar_animal();
         break;
 
     case CUIDAR_ANIMAL:
@@ -46,7 +46,7 @@ void ejecutar_opcion_principal(Reserva* reserva, int opcion){
         break;
 
     case ADOPTAR_ANIMAL:
-        
+        reserva->adoptar_animal();
         break;
     
     case SALIR:
@@ -62,25 +62,4 @@ void mostrar_menu_cuidar(){
     << '\t' << "2. Alimentar a todos." << endl
     << '\t' << "3. Baniar a todos." << endl
     << '\t' << "4. Volver al menu principal." << endl;
-}
-
-void ejecutar_opcion_cuidar(Reserva* reserva, int opcion){
-    switch (opcion)
-    {
-    case ELEGIR_INDIVIDUALMENTE:
-        
-        break;
-    
-    case ALIMENTAR_TODOS:
-        
-        break;
-    
-    case BANIAR_TODOS:
-        
-        break;
-
-    case VOLVER_AL_PRINCIPAL:
-            
-        break;
-    }
 }

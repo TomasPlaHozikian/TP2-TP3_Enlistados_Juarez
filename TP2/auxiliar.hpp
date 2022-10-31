@@ -1,7 +1,6 @@
 #ifndef AUXILIAR_HPP
 #define AUXILIAR_HPP
 
-#include "animal.hpp"
 #include "lista.hpp"
 #include "perro.hpp"
 #include "caballo.hpp"
