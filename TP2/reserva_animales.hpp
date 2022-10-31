@@ -29,9 +29,6 @@ public:
     //POST: Se muestra la informacion del animal buscado por el usuario.
     void buscar_animal();
     //PRE: -
-    //POST: Solicita al usuario opciones de cuidado para un animal de forma individual.
-    void cuidar_animal_indivudal();
-    //PRE: -
     //POST: Alimenta a todos los animales.
     void alimentar_animales();
     //PRE: -
