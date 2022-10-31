@@ -129,7 +129,7 @@ void Reserva::buscar_animal(){
     lista_animales->consulta(pos)->mostrar();
 }
 
-void Reserva::cuidar_animal_indivudal(){
+void Reserva::cuidar_animal_individual(){
     int opcion_de_animal;
     lista_animales->iniciar();
     while(lista_animales->hay_siguiente()){
