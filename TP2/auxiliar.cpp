@@ -177,7 +177,7 @@ bool existe_animal(Lista* lista, string nombre){
     Animal* animal;
     int cantidad_animales=lista->obtener_cantidad(), i=1;
 
-    while(resultado && i<=cantidad_animales){
+    while(!resultado && i<=cantidad_animales){
         animal=lista->consulta(i);
 
         if (nombre == animal->obtener_nombre())
@@ -263,18 +263,17 @@ void mostrar_adopciones_posibles(int espacio_disponible, Lista* lista_animales){
 int obtener_posicion_animal(Lista* lista, string nombre){
     bool resultado=false;
     Animal* animal;
-    int i = 1;
+    int i = 0;
     int cantidad_animales=lista->obtener_cantidad();
 
-    while(resultado && i<=cantidad_animales){
+    while(!resultado && i<=cantidad_animales){
         animal=lista->consulta(i);
 
         if (nombre == animal->obtener_nombre())
         {
             resultado=true;
         }
-
-        i++;
+        else i++;
     }
 
     return i;
