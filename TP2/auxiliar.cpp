@@ -5,10 +5,10 @@ using namespace std;
 string correccion_mayusculas(string palabra){
     string resultado="";
     char letra_correjida=char(toupper(palabra[0]));
-    int tamanio_palabra=palabra.length();
+    long unsigned int tamanio_palabra=palabra.length();
 
     resultado=resultado+letra_correjida;
-    for (int i = 1; i < tamanio_palabra; i++)
+    for (long unsigned int i = 1; i < tamanio_palabra; i++)
     {
         letra_correjida=char(tolower(palabra[i]));
         resultado=resultado+letra_correjida;
@@ -19,7 +19,8 @@ string correccion_mayusculas(string palabra){
 
 int pedir_edad(){
     string ingreso, limpio;
-    int edad, i, tamanio_ingreso;
+    int edad;
+    long unsigned int tamanio_ingreso, i;
     bool es_numero, valido=false, cambio;
 
     while (!valido)
@@ -71,7 +72,7 @@ string pedir_tamanio(){
     getline(cin>>ws,ingreso);
     tamanio=correccion_mayusculas(ingreso);
 
-    while (tamanio != "Diminuto" && tamanio != "Pequenio" && tamanio != "Mediano" && tamanio != "Grande" && tamanio != "Gigante")
+    while (tamanio != "Diminuto" && tamanio != "Pequenio" && tamanio != "Mediano" && tamanio != "Grande" && tamanio != "Gigante" && tamanio != "Pequeño")
     {
         cout<<"El tamanio ingresado no es valido, si quiere saber la lista de tamanios ingrese 1"<<endl
         <<"Ingrese el tamanio del animal: ";
@@ -86,6 +87,12 @@ string pedir_tamanio(){
             tamanio=correccion_mayusculas(ingreso);
         }
     }
+    
+    if (tamanio=="Pequeño")
+    {
+        tamanio="Pequenio";
+    }
+    
     return tamanio;
 }
 
@@ -100,7 +107,7 @@ void mostrar_tamanios(){
 
 char pedir_especie(){
     string ingreso;
-    int tamanio_ingreso;
+    long unsigned int tamanio_ingreso;
     char especie;
 
     cout<<"Ingrese la especie del animal: ";
