@@ -201,6 +201,7 @@ void Reserva::cuidar_animales(){
         }
 }
 
+
 void Reserva::adoptar_animal(){
     int espacio_disponible, opcion_elegida, pos;
     
