@@ -21,9 +21,6 @@ enum OpcionMenuCuidar {
     VOLVER_AL_PRINCIPAL
 };
 
-int CANTIDAD_OPCIONES_MENU_PRINCIPAL=6;
-int CANTIDAD_OPCIONES_MENU_CUIDAR=4;
-
 //PRE: -
 //POST: Muestra el menu en la consola.
 void mostrar_menu_principal();
