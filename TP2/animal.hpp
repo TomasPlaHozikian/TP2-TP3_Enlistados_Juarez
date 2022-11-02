@@ -14,8 +14,8 @@ class Animal{
         string tamanio;
         char especie;
         string personalidad;
-        int hambre;
-        int higiene;
+        float hambre;
+        float higiene;
     public:
         //PRE: -
         //POST: Inicializa animal con los parametros indicados.

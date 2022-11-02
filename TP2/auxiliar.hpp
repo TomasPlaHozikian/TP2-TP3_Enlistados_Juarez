@@ -44,5 +44,14 @@ bool existe_animal(Lista* lista, string nombre);
 //PRE: El animal debe ser uno de los posibles.
 //POST: Crea el animal correspondiente y lo devuelve para cargarlo a la lista.
 Animal* creador_animal(string nombre, int edad, string tamanio, char especie, string personalidad);
+//PRE: Que el espacio disponible sea un entero positivo
+//POST: Muestra la lista de todos los animales que el usuario puede adoptar segun su espacio disponible.
+void mostrar_adopciones_posibles(int espacio_disponible, Lista* lista_animales);
+//PRE: El nombre debe ser un nombre valido de un animal en la lista.
+//POST: Devuelve la posicion en la lista de dicho animal.
+int obtener_posicion_animal(Lista* lista, string nombre);
+//PRE: -
+//POST: Devuelve si el usuario decidio adoptar un animal listado, o cancelar esta opcion.
+int adoptar_o_cancelar();
 
 #endif
