@@ -4,13 +4,13 @@ using namespace std;
 
 string correccion_mayusculas(string palabra){
     string resultado="";
-    char letra_correjida=toupper(palabra[0]);
+    char letra_correjida=char(toupper(palabra[0]));
     int tamanio_palabra=palabra.length();
 
     resultado=resultado+letra_correjida;
     for (int i = 1; i < tamanio_palabra; i++)
     {
-        letra_correjida=tolower(palabra[i]);
+        letra_correjida=char(tolower(palabra[i]));
         resultado=resultado+letra_correjida;
     }
 

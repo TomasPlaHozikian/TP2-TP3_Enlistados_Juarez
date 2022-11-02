@@ -106,8 +106,6 @@ void Reserva::listar_animales(){
 
 
 void Reserva::buscar_animal(){
-    Animal* animal;
-    int pos, i = 0;
     string ingreso, nombre;
     bool ya_existe=false;
 
@@ -203,7 +201,7 @@ void Reserva::cuidar_animales(){
 
 
 void Reserva::adoptar_animal(){
-    int espacio_disponible, opcion_elegida, pos;
+    int espacio_disponible, opcion_elegida;
     
     cout << "Ingresar tamanio disponible para el animal en metros cuadrados: " << endl;
     cin >> espacio_disponible;
