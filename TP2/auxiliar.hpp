@@ -53,5 +53,8 @@ int obtener_posicion_animal(Lista* lista, string nombre);
 //PRE: -
 //POST: Devuelve si el usuario decidio adoptar un animal listado, o cancelar esta opcion.
 int adoptar_o_cancelar();
+//PRE: -
+//POST: Devuelve un tamanio en metros cuadrados valido.
+int pedir_tamanio_adoptar();
 
 #endif
