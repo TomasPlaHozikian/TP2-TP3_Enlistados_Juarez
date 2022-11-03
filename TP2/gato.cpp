@@ -13,13 +13,15 @@ Gato::Gato(string nombre, int edad, string tamanio, char especie, string persona
 
 
 void Gato::modificador_hambre_higiene(){
-    hambre += 10*modificador_alimento_personalidad();
+    if(hambre < 100 && hambre >= 0) hambre += modificador_alimento_personalidad();
 }
+
 
 void Gato::alimentar(){
     hambre = 0;
     cout<<nombre<<" comio atun."<<endl;
 }
+
 
 void Gato::higienizar(){
     higiene = 100;

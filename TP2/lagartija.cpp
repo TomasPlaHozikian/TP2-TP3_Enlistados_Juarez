@@ -13,16 +13,17 @@ Lagartija::Lagartija(string nombre, int edad, string tamanio, char especie, stri
 
 
 void Lagartija::modificador_hambre_higiene(){
-    hambre += 10*modificador_alimento_personalidad();
+    if(hambre < 100 && hambre >= 0) hambre += modificador_alimento_personalidad();
 }
+
 
 void Lagartija::alimentar(){
     hambre = 0;
     cout<<nombre<<" comio insectos."<<endl;
 }
 
+
 void Lagartija::higienizar(){
     higiene = 100;
     cout<<nombre<<" no requiere ducha."<<endl;
     }
-

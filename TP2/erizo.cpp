@@ -13,14 +13,16 @@ Erizo::Erizo(string nombre, int edad, string tamanio, char especie, string perso
 
 
 void Erizo::modificador_hambre_higiene(){
-    hambre += 10*modificador_alimento_personalidad();
-    higiene -= 10*modificador_higiene_personalidad();
+    if(hambre < 100 && hambre >= 0) hambre += modificador_alimento_personalidad();
+    if(higiene <= 100 && higiene > 0) higiene -= modificador_higiene_personalidad();
 }
+
 
 void Erizo::alimentar(){
     hambre = 0;
     cout<<nombre<<" comio insectos."<<endl;
 }
+
 
 void Erizo::higienizar(){
     higiene = 100;
