@@ -3,6 +3,7 @@
 
 #include "animal.hpp"
 
+
 class Lagartija : public Animal{
     public:
         Lagartija(string nombre, int edad, string tamanio, char especie, string personalidad);
@@ -10,5 +11,6 @@ class Lagartija : public Animal{
         void alimentar();
         void higienizar();
 };
+
 
 #endif //LAGARTIJA_HPP

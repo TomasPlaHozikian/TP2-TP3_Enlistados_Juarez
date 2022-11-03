@@ -1,7 +1,6 @@
 #ifndef AUXILIAR_HPP
 #define AUXILIAR_HPP
 
-#include "animal.hpp"
 #include "lista.hpp"
 #include "perro.hpp"
 #include "caballo.hpp"
@@ -50,9 +49,12 @@ Animal* creador_animal(string nombre, int edad, string tamanio, char especie, st
 void mostrar_adopciones_posibles(int espacio_disponible, Lista* lista_animales);
 //PRE: El nombre debe ser un nombre valido de un animal en la lista.
 //POST: Devuelve la posicion en la lista de dicho animal.
-int obtener_posicion_animal(Lista* lista, string nombre, int i);
+int obtener_posicion_animal(Lista* lista, string nombre);
 //PRE: -
 //POST: Devuelve si el usuario decidio adoptar un animal listado, o cancelar esta opcion.
 int adoptar_o_cancelar();
+//PRE: -
+//POST: Devuelve un tamanio en metros cuadrados valido.
+int pedir_tamanio_adoptar();
 
 #endif

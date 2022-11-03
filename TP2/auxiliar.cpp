@@ -2,47 +2,50 @@
 
 using namespace std;
 
+
 string correccion_mayusculas(string palabra){
-    string resultado="";
-    char letra_correjida=toupper(palabra[0]);
-    int tamanio_palabra=palabra.length();
+    string resultado = "";
+    char letra_correjida=char(toupper(palabra[0]));
+    long unsigned int tamanio_palabra = palabra.length();
 
     resultado=resultado+letra_correjida;
-    for (int i = 1; i < tamanio_palabra; i++)
+    for (long unsigned int i = 1; i < tamanio_palabra; i++)
     {
-        letra_correjida=tolower(palabra[i]);
-        resultado=resultado+letra_correjida;
+        letra_correjida = char(tolower(palabra[i]));
+        resultado = resultado+letra_correjida;
     }
 
     return resultado;
 }
 
+
 int pedir_edad(){
     string ingreso, limpio;
-    int edad, i, tamanio_ingreso;
+    int edad;
+    long unsigned int tamanio_ingreso, i;
     bool es_numero, valido=false, cambio;
 
     while (!valido)
     {  
         es_numero=true;
-        i=0;
-        limpio="";
-        ingreso="";
-        cambio=false;
+        i = 0;
+        limpio = "";
+        ingreso = "";
+        cambio = false;
 
         cout<<"Ingrese la edad del animal: ";
         getline(cin>>ws,ingreso);
-        tamanio_ingreso=ingreso.length();
-        while (i<tamanio_ingreso && es_numero==true)
+        tamanio_ingreso = ingreso.length();
+        while (i<tamanio_ingreso && es_numero == true)
         {
-            if (ingreso[i]!=' ' && !isdigit(ingreso[i]))
+            if (ingreso[i] != ' ' && !isdigit(ingreso[i]))
             {
-                es_numero=false;
+                es_numero = false;
             }
             else if (isdigit(ingreso[i]))
             {
-                limpio=limpio+ingreso[i];
-                cambio=true;
+                limpio = limpio + ingreso[i];
+                cambio = true;
             }
             i++;
         }
@@ -50,9 +53,9 @@ int pedir_edad(){
         if (es_numero && cambio)
         {
             edad=stoi(limpio);
-            if (edad>=0 && edad<=100)
+            if (edad >= 0 && edad <= 100)
             {
-                valido=true;
+                valido = true;
             }
         }
 
@@ -64,6 +67,7 @@ int pedir_edad(){
     return edad;
 }
 
+
 string pedir_tamanio(){
     string tamanio,ingreso;
     
@@ -71,7 +75,7 @@ string pedir_tamanio(){
     getline(cin>>ws,ingreso);
     tamanio=correccion_mayusculas(ingreso);
 
-    while (tamanio != "Diminuto" && tamanio != "Pequenio" && tamanio != "Mediano" && tamanio != "Grande" && tamanio != "Gigante")
+    while (tamanio != "Diminuto" && tamanio != "Pequenio" && tamanio != "Mediano" && tamanio != "Grande" && tamanio != "Gigante" && tamanio != "Pequeño")
     {
         cout<<"El tamanio ingresado no es valido, si quiere saber la lista de tamanios ingrese 1"<<endl
         <<"Ingrese el tamanio del animal: ";
@@ -83,11 +87,18 @@ string pedir_tamanio(){
             mostrar_tamanios();
             cout<<"Ingrese el tamanio del animal: ";
             getline(cin>>ws,ingreso);
-            tamanio=correccion_mayusculas(ingreso);
+            tamanio = correccion_mayusculas(ingreso);
         }
     }
+    
+    if (tamanio == "Pequeño")
+    {
+        tamanio = "Pequenio";
+    }
+    
     return tamanio;
 }
+
 
 void mostrar_tamanios(){
     cout << "TAMANIOS" << endl
@@ -98,35 +109,37 @@ void mostrar_tamanios(){
     << '\t' << "Gigante" << endl;
 }
 
+
 char pedir_especie(){
     string ingreso;
-    int tamanio_ingreso;
+    long unsigned int tamanio_ingreso;
     char especie;
 
     cout<<"Ingrese la especie del animal: ";
     getline(cin>>ws,ingreso);
     tamanio_ingreso=ingreso.length();
-    especie=char(toupper(ingreso[0]));
+    especie = char(toupper(ingreso[0]));
 
     while ((especie != 'P' && especie != 'G' && especie != 'C' && especie != 'R' && especie != 'O' && especie != 'E' && especie != 'L') || tamanio_ingreso!=1)
     {
         cout<<"La especie ingresada no es valida, si quiere saber la lista de especies ingrese 1"<<endl;
         cout<<"Ingrese la especie del animal: ";
         getline(cin>>ws,ingreso);
-        tamanio_ingreso=ingreso.length();
-        especie=char(toupper(ingreso[0]));
+        tamanio_ingreso = ingreso.length();
+        especie = char(toupper(ingreso[0]));
 
         if (especie == '1')
         {
             mostrar_especies();
             cout<<"Ingrese la especie del animal: ";
             getline(cin>>ws,ingreso);
-            tamanio_ingreso=ingreso.length();
-            especie=char(toupper(ingreso[0]));
+            tamanio_ingreso = ingreso.length();
+            especie = char(toupper(ingreso[0]));
         }
     }
     return especie;
 }
+
 
 void mostrar_especies(){
     cout << "ESPECIES" << endl
@@ -138,6 +151,7 @@ void mostrar_especies(){
     << '\t' << "E. Erizo." << endl
     << '\t' << "L. Lagartija." << endl;
 }
+
 
 string pedir_personalidad(){
     string tamanio,ingreso;
@@ -164,6 +178,7 @@ string pedir_personalidad(){
     return tamanio;
 }
 
+
 void mostrar_personalidades(){
     cout << "PERSONALIDADES" << endl
     << '\t' << "Dormilon" << endl
@@ -172,17 +187,18 @@ void mostrar_personalidades(){
     << '\t' << "Travieso" << endl;
 }
 
-bool existe_animal(Lista* lista, string nombre){
-    bool resultado=false;
-    Animal* animal;
-    int cantidad_animales=lista->obtener_cantidad(), i=1;
 
-    while(resultado && i<=cantidad_animales){
-        animal=lista->consulta(i);
+bool existe_animal(Lista* lista, string nombre){
+    bool resultado = false;
+    Animal* animal;
+    int cantidad_animales = lista->obtener_cantidad(), i = 1;
+
+    while(!resultado && i <= cantidad_animales){
+        animal = lista->consulta(i);
 
         if (nombre == animal->obtener_nombre())
         {
-            resultado=true;
+            resultado = true;
         }
 
         i++;
@@ -191,37 +207,39 @@ bool existe_animal(Lista* lista, string nombre){
     return resultado;
 }
 
+
 Animal* creador_animal(string nombre, int edad, string tamanio, char especie, string personalidad){
     Animal* animal;
-    if(especie=='P'){
+    if(especie == 'P'){
         animal = new Perro(nombre, edad, tamanio, especie, personalidad);
     }
-    else if(especie=='G'){
+    else if(especie == 'G'){
         animal = new Gato(nombre, edad, tamanio, especie, personalidad);
     }
-    else if(especie=='C'){
+    else if(especie == 'C'){
         animal = new Caballo(nombre, edad, tamanio, especie, personalidad);
     }
-    else if(especie=='R'){
+    else if(especie == 'R'){
         animal = new Roedor(nombre, edad, tamanio, especie, personalidad);
     }
-    else if(especie=='O'){
+    else if(especie == 'O'){
         animal = new Conejo(nombre, edad, tamanio, especie, personalidad);
     }
-    else if(especie=='E'){
+    else if(especie == 'E'){
         animal = new Erizo(nombre, edad, tamanio, especie, personalidad);
     }
-    else if(especie=='L'){
+    else if(especie == 'L'){
         animal = new Lagartija(nombre, edad, tamanio, especie, personalidad);
     }
     return animal;
 }
 
+
 void mostrar_adopciones_posibles(int espacio_disponible, Lista* lista_animales){
     
     lista_animales->iniciar();
     cout << "LISTA DE ANIMALES QUE PUEDES ADOPTAR SEGUN TU ESPACIO DISPONIBLE" << endl;
-    int i=1;
+    int i = 1;
     while(lista_animales->hay_siguiente()){
         Animal* animal = lista_animales->siguiente();
         
@@ -260,37 +278,94 @@ void mostrar_adopciones_posibles(int espacio_disponible, Lista* lista_animales){
     }
 }
 
-int obtener_posicion_animal(Lista* lista, string nombre, int i){
-    bool resultado=false;
-    Animal* animal;
-    int cantidad_animales=lista->obtener_cantidad(), i=1;
 
-    while(resultado && i<=cantidad_animales){
-        animal=lista->consulta(i);
+int obtener_posicion_animal(Lista* lista, string nombre){
+    bool resultado = false;
+    Animal* animal;
+    int i = 0;
+    int cantidad_animales = lista->obtener_cantidad();
+
+    while(!resultado && i <= cantidad_animales){
+        animal = lista->consulta(i);
 
         if (nombre == animal->obtener_nombre())
         {
-            resultado=true;
+            resultado = true;
         }
-
-        i++;
+        else i++;
     }
 
     return i;
 }
 
+
 int adoptar_o_cancelar(){
-    int opcion_elegida;
+    char opcion_elegida;
+    string ingreso;
+    int respuesta;
     cout << "Desea adoptar uno de los animales listados?" << endl
     << "1: Adoptar animal." << endl
     << "2: Cancelar." << endl;
 
-    cin >> opcion_elegida;
-    while (opcion_elegida != 1 && opcion_elegida != 2){
+    getline(cin>>ws,ingreso);
+    opcion_elegida = ingreso[0];
+    long unsigned int tam_ingreso = ingreso.length();
+    while ((opcion_elegida != '1' && opcion_elegida != '2') || tam_ingreso != 1){
         cout << "La opcion elegida no es valida" << endl
         << "1: Adoptar animal." << endl
         << "2: Cancelar." << endl;
-        cin >> opcion_elegida;
+        getline(cin>>ws,ingreso);
+        opcion_elegida = ingreso[0];
+        tam_ingreso = ingreso.length();
     }
-    return opcion_elegida;
+    respuesta = stoi(ingreso);
+    return respuesta;
+}
+
+int pedir_tamanio_adoptar(){
+    string ingreso, limpio;
+    int tamanio, i, tamanio_ingreso;
+    bool es_numero, valido=false, cambio;
+
+    while (!valido)
+    {
+        es_numero=true;
+        i=0;
+        limpio="";
+        ingreso="";
+        cambio=false;
+
+        cout<<"Ingresar tamanio disponible para el animal en metros cuadrados: ";
+        getline(cin>>ws,ingreso);
+        cout<<endl;
+        tamanio_ingreso=ingreso.length();
+        while (i<tamanio_ingreso && es_numero==true)
+        {
+            if (ingreso[i]!=' ' && !isdigit(ingreso[i]))
+            {
+                es_numero=false;
+            }
+            else if (isdigit(ingreso[i]))
+            {
+                limpio=limpio+ingreso[i];
+                cambio=true;
+            }
+            i++;
+        }
+
+        if (es_numero && cambio)
+        {
+            tamanio=stoi(limpio);
+            if (tamanio>0)
+            {
+                valido=true;
+            }
+        }
+
+        if (!es_numero || !valido)
+        {
+            cout << "El tamanio ingresado es invalido, recuerde que debe ser un numero entero mayor a 0." <<endl;
+        }
+    }
+    return tamanio;
 }

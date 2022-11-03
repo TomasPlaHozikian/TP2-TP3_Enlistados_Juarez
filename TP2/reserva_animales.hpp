@@ -4,7 +4,6 @@
 #include <fstream>
 #include "auxiliar.hpp"
 
-string ARCHIVO_RESERVA = "Reserva.csv";
 
 class Reserva{
 private:
@@ -26,17 +25,20 @@ public:
     //POST: Se le piden los datos del animal al usuario, se validan y se agrega el animal a la lista.
     void rescatar_animal();
     //PRE: Debe existir el nombre del animal en la lista.
-    //POST: Se muestra la informacion del animal buscado por el usuario.
-    void buscar_animal(string nombre);
+    //POST: Se muestra la informacion del animal ingresado por parametro.
+    void mostrar_animal_por_nombre(string nombre);
     //PRE: -
-    //POST: Solicita al usuario opciones de cuidado para un animal de forma individual.
-    void cuidar_animal_indivudal();
+    //POST: Se muestra la informacion del animal buscado por el usuario.
+    void buscar_animal();
     //PRE: -
     //POST: Alimenta a todos los animales.
     void alimentar_animales();
     //PRE: -
     //POST: Higieniza a todos los animales.
     void higienizar_animales();
+    //PRE: -
+    //POST: Solicita al usuario opciones de cuidado para un animal de forma individual.
+    void cuidar_animal_individual();
     //PRE: -
     //POST: Muestra un menu con opciones (elegir individualmente, alimentar a todos, baniar a todos y regresar al inicio)
     //      y ejecuta la opcion seleccionada por el usuario
@@ -46,8 +48,11 @@ public:
     //      los animales dentro del parametro para que el usuario seleccione un animal y si desea adoptarlo se remueve de la lista.
     void adoptar_animal();
     //PRE: -
+    //POST: Modifica la higiene y hambre de los animales luego de una funcion.
+    void modificador_hambre_higiene_animales();
+    //PRE: -
     //POST: Se guarda el archivo animales.csv con las modificaciones realizadas y se cierra el programa.
-    void guardar_y_salir();
+    void guardar();
     //PRE: -
     //POST: Elimina la lista con los animales y sus datos.
     ~Reserva();
