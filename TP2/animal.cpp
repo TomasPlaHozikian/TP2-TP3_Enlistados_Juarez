@@ -54,7 +54,7 @@ void Animal::mostrar(){
     cout<<" Nombre: "<<nombre
     <<" Edad: "<<edad
     <<" Tamanio: "<<tamanio
-    <<" Especie: "<<especie
+    <<" Especie: "<<obtener_especie_full()
     <<" Personalidad: "<<personalidad<<endl
     <<" Nivel de Hambre: "<<hambre
     <<" Nivel de Higiene: "<<higiene<<endl;
@@ -74,4 +74,9 @@ int Animal::modificador_higiene_personalidad(){
     if(personalidad == "Sociable") modificador = 5;
     if(personalidad == "Travieso") modificador = 20;
     return modificador;
+}
+
+
+Animal::~Animal(){
+    cout<<"se borro el animal"<<endl;
 }

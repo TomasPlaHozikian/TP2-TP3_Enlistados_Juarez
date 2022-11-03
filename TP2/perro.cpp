@@ -17,10 +17,12 @@ void Perro::modificador_hambre_higiene(){
     if(higiene <= 100 && higiene > 0) higiene -= modificador_higiene_personalidad();
 }
 
+
 void Perro::alimentar(){
     hambre = 0;
     cout<<nombre<<" comio huesos."<<endl;
 }
+
 
 void Perro::higienizar(){
     higiene = 100;

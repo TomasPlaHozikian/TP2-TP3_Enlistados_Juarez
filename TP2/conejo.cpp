@@ -17,10 +17,12 @@ void Conejo::modificador_hambre_higiene(){
     if(higiene <= 100 && higiene > 0) higiene -= modificador_higiene_personalidad();
 }
 
+
 void Conejo::alimentar(){
     hambre = 0;
     cout<<nombre<<" comio lechuga."<<endl;
 }
+
 
 void Conejo::higienizar(){
     higiene = 100;
