@@ -100,6 +100,7 @@ void Reserva::listar_animales(){
         Animal* animal = lista_animales->siguiente();
         cout<<i<<')';
         animal->mostrar();
+        cout<<endl;
         i++;
     }
 }
@@ -123,6 +124,7 @@ void Reserva::buscar_animal(){
 
         ya_existe = existe_animal(lista_animales, nombre);
     }
+    cout<<endl;
     mostrar_animal_por_nombre(nombre);
 
 }
@@ -250,9 +252,8 @@ void Reserva::modificador_hambre_higiene_animales(){
 }
 
 
-void Reserva::guardar_y_salir(){
+void Reserva::guardar(){
     ofstream archivo("Reserva.csv");
-
     lista_animales->iniciar();
     while(lista_animales->hay_siguiente()){
         Animal* animal = lista_animales->siguiente();

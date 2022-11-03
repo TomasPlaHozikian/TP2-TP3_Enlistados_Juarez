@@ -9,11 +9,12 @@ int main(){
     mostrar_menu_principal();
     opcion = pedir_opcion(6);
     while(opcion != 6){
+        system("clear");
         ejecutar_opcion_principal(reserva, opcion);
         mostrar_menu_principal();
         opcion = pedir_opcion(6);
     }
-    reserva->guardar_y_salir();
+    reserva->guardar();
     reserva->~Reserva();
     return 0;
 }

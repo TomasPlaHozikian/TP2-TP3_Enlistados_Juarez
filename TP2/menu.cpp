@@ -2,16 +2,18 @@
 
 using namespace std;
 
+
 void mostrar_menu_principal(){
-    cout << endl << endl << endl;
-    cout<< "MENU DE MANEJO DE RESERVA DE ANIMALES" << endl << endl
-    << "1) Listar animales rescatados." << endl
-    << "2) Rescatar animal." << endl
-    << "3) Buscar animal." << endl
-    << "4) Cuidar animales." << endl
-    << "5) Adoptar animal." << endl
-    << "6) Guardar y salir." << endl;
+    cout<<endl<<endl<< endl;
+    cout<<"MENU DE MANEJO DE RESERVA DE ANIMALES"<<endl<<endl<<endl
+    <<"1) Listar animales rescatados."<<endl<<endl
+    <<"2) Rescatar animal."<<endl<<endl
+    <<"3) Buscar animal." <<endl<<endl
+    <<"4) Cuidar animales."<<endl<<endl
+    <<"5) Adoptar animal."<<endl<<endl
+    <<"6) Guardar y salir."<<endl<<endl;
 }
+
 
 int pedir_opcion(int cantidad_opciones){
     int opcion_elegida;
@@ -25,6 +27,7 @@ int pedir_opcion(int cantidad_opciones){
 
     return opcion_elegida;
 }
+
 
 void ejecutar_opcion_principal(Reserva* reserva, int opcion){
     switch (opcion)

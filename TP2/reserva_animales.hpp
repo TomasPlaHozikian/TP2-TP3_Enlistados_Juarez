@@ -52,7 +52,7 @@ public:
     void modificador_hambre_higiene_animales();
     //PRE: -
     //POST: Se guarda el archivo animales.csv con las modificaciones realizadas y se cierra el programa.
-    void guardar_y_salir();
+    void guardar();
     //PRE: -
     //POST: Elimina la lista con los animales y sus datos.
     ~Reserva();

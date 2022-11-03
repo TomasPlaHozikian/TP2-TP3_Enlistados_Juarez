@@ -5,6 +5,7 @@
 
 typedef Animal Dato;
 
+
 class Nodo{
     private:
         Dato* dato;
@@ -16,5 +17,6 @@ class Nodo{
         Nodo* obtener_siguiente();
 
 };
+
 
 #endif

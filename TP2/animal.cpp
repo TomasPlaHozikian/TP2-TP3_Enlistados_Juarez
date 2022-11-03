@@ -54,7 +54,7 @@ void Animal::mostrar(){
     cout<<" Nombre: "<<nombre
     <<" Edad: "<<edad
     <<" Tamanio: "<<tamanio
-    <<" Especie: "<<especie
+    <<" Especie: "<<obtener_especie_full()
     <<" Personalidad: "<<personalidad<<endl
     <<" Nivel de Hambre: "<<hambre
     <<" Nivel de Higiene: "<<higiene<<endl;
