@@ -23,6 +23,7 @@ enum OpcionMenuCuidar {
     VOLVER_AL_PRINCIPAL
 };
 
+
 //PRE: -
 //POST: Muestra el menu en la consola.
 void mostrar_menu_principal();

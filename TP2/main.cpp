@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 int main(){
     int opcion;
     Reserva* reserva = new Reserva();
@@ -15,6 +16,7 @@ int main(){
         opcion = pedir_opcion(6);
     }
     reserva->guardar();
+    delete reserva->obtener_lista();
     reserva->~Reserva();
     return 0;
 }

@@ -40,17 +40,22 @@ Dato* Lista::consulta(int pos){
 
 
 void Lista::baja(int pos){
-    Nodo* borrar = primero;
+    Nodo* borrar;
+    Animal* borrar2;
     if(pos == 1){
+        borrar = primero;
+        borrar2 = primero->obtener_dato();
         primero = primero->obtener_siguiente();
     } 
     else{
         Nodo* anterior = obtener_nodo(pos - 1);
-        borrar = anterior->obtener_siguiente();
+        borrar = obtener_nodo(pos);
+        borrar2 = borrar->obtener_dato();
         Nodo* siguiente = borrar->obtener_siguiente();
         anterior->cambiar_siguiente(siguiente);
 
     }
+    delete borrar2;
     delete borrar;
     cantidad--;
 }
@@ -85,6 +90,7 @@ void Lista::iniciar(){
 
 
 Lista::~Lista(){
-    while (! vacia())
+    while (! vacia()){
         baja(1);
+    }
 }

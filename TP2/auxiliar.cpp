@@ -300,17 +300,24 @@ int obtener_posicion_animal(Lista* lista, string nombre){
 
 
 int adoptar_o_cancelar(){
-    int opcion_elegida;
+    char opcion_elegida;
+    string ingreso;
+    int respuesta;
     cout << "Desea adoptar uno de los animales listados?" << endl
     << "1: Adoptar animal." << endl
     << "2: Cancelar." << endl;
 
-    cin >> opcion_elegida;
-    while (opcion_elegida != 1 && opcion_elegida != 2){
+    getline(cin>>ws,ingreso);
+    opcion_elegida = ingreso[0];
+    long unsigned int tam_ingreso = ingreso.length();
+    while ((opcion_elegida != '1' && opcion_elegida != '2') || tam_ingreso != 1){
         cout << "La opcion elegida no es valida" << endl
         << "1: Adoptar animal." << endl
         << "2: Cancelar." << endl;
-        cin >> opcion_elegida;
+        getline(cin>>ws,ingreso);
+        opcion_elegida = ingreso[0];
+        tam_ingreso = ingreso.length();
     }
-    return opcion_elegida;
+    respuesta = stoi(ingreso);
+    return respuesta;
 }

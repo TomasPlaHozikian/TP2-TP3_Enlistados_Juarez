@@ -27,3 +27,4 @@ void Lagartija::higienizar(){
     higiene = 100;
     cout<<nombre<<" no requiere ducha."<<endl;
     }
+    

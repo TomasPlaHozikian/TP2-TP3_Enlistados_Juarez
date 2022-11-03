@@ -75,3 +75,8 @@ int Animal::modificador_higiene_personalidad(){
     if(personalidad == "Travieso") modificador = 20;
     return modificador;
 }
+
+
+Animal::~Animal(){
+    cout<<"se borro el animal"<<endl;
+}

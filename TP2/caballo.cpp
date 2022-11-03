@@ -27,3 +27,4 @@ void Caballo::alimentar(){
 void Caballo::higienizar(){
     higiene = 100;
     }
+    
