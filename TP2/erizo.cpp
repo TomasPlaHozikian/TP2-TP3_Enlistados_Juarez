@@ -1,7 +1,7 @@
 #include "erizo.hpp"
 
 
-Erizo::Erizo(string nombre, int edad, string tamanio, char especie, string personalidad){
+Erizo::Erizo(string nombre, int edad, string tamanio, char especie, string personalidad) {
     this->nombre = nombre;
     this->edad = edad;
     this->tamanio = tamanio;
@@ -12,18 +12,18 @@ Erizo::Erizo(string nombre, int edad, string tamanio, char especie, string perso
 }
 
 
-void Erizo::modificador_hambre_higiene(){
-    if(hambre < 100 && hambre >= 0) hambre += modificador_alimento_personalidad();
-    if(higiene <= 100 && higiene > 0) higiene -= modificador_higiene_personalidad();
+void Erizo::modificador_hambre_higiene() {
+    if (hambre < 100 && hambre >= 0) hambre += modificador_alimento_personalidad();
+    if (higiene <= 100 && higiene > 0) higiene -= modificador_higiene_personalidad();
 }
 
 
-void Erizo::alimentar(){
+void Erizo::alimentar() {
     hambre = 0;
     cout<<nombre<<" comio insectos."<<endl;
 }
 
 
-void Erizo::higienizar(){
+void Erizo::higienizar() {
     higiene = 100;
     }
