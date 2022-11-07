@@ -7,7 +7,7 @@ string correccion_mayusculas(string palabra) {
     string resultado = "";
     char letra_correjida = char(toupper(palabra[0]));
     long unsigned int tamanio_palabra = palabra.length();
-    resultado=resultado+letra_correjida;
+    resultado = resultado + letra_correjida;
     for (long unsigned int i = 1; i < tamanio_palabra; i++) {
         letra_correjida = char(tolower(palabra[i]));
         resultado = resultado+letra_correjida;
@@ -69,7 +69,7 @@ string pedir_tamanio() {
             mostrar_tamanios();
             cout<<"Ingrese el tamanio del animal: ";
             getline(cin>>ws,ingreso);
-            tamanio=correccion_mayusculas(ingreso);
+            tamanio = correccion_mayusculas(ingreso);
         }
     } 
     if (tamanio == "Pequeño") {
@@ -91,7 +91,7 @@ void mostrar_tamanios() {
 
 char pedir_especie() {
     string ingreso;
-    int tamanio_ingreso;
+    long unsigned int tamanio_ingreso;
     char especie;
     cout<<"Ingrese la especie del animal: ";
     getline(cin>>ws,ingreso);
@@ -107,8 +107,8 @@ char pedir_especie() {
             mostrar_especies();
             cout<<"Ingrese la especie del animal: ";
             getline(cin>>ws,ingreso);
-            tamanio_ingreso=ingreso.length();
-            especie=char(toupper(ingreso[0]));
+            tamanio_ingreso = ingreso.length();
+            especie = char(toupper(ingreso[0]));
         }
     }
     return especie;
@@ -166,7 +166,7 @@ bool existe_animal(Lista* lista, string nombre) {
 
         if (nombre == animal->obtener_nombre())
         {
-            resultado=true;
+            resultado = true;
         }
 
         i++;
@@ -251,8 +251,7 @@ int obtener_posicion_animal(Lista* lista, string nombre) {
         if (nombre == animal->obtener_nombre()) {
             resultado = true;
         }
-
-        i++;
+        else i++;
     }
     return i;
 }
