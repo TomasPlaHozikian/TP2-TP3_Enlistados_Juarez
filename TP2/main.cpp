@@ -3,17 +3,21 @@
 
 using namespace std;
 
-int main(){
+
+int main() {
     int opcion;
     Reserva* reserva = new Reserva();
     mostrar_menu_principal();
     opcion = pedir_opcion(6);
-    while(opcion != 6){
+    while (opcion != 6) {
+        system("clear");
         ejecutar_opcion_principal(reserva, opcion);
         mostrar_menu_principal();
         opcion = pedir_opcion(6);
     }
-    reserva->guardar_y_salir();
-    reserva->~Reserva();
+    reserva->guardar();
+    delete reserva->obtener_lista();
+    delete reserva;
+    system("clear");
     return 0;
 }

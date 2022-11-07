@@ -3,6 +3,7 @@
 
 #include "nodo.hpp"
 
+
 class Lista{
     private:
         Nodo* primero;

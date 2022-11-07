@@ -1,7 +1,7 @@
 #include "perro.hpp"
 
 
-Perro::Perro(string nombre, int edad, string tamanio, char especie, string personalidad){
+Perro::Perro(string nombre, int edad, string tamanio, char especie, string personalidad) {
     this->nombre = nombre;
     this->edad = edad;
     this->tamanio = tamanio;
@@ -12,17 +12,19 @@ Perro::Perro(string nombre, int edad, string tamanio, char especie, string perso
 }
 
 
-void Perro::modificador_hambre_higiene(){
-    if(hambre < 100 && hambre >= 0) hambre += modificador_alimento_personalidad();
-    if(higiene <= 100 && higiene > 0) higiene -= modificador_higiene_personalidad();
+void Perro::modificador_hambre_higiene() {
+    if (hambre < 100 && hambre >= 0) hambre += modificador_alimento_personalidad();
+    if (higiene <= 100 && higiene > 0) higiene -= modificador_higiene_personalidad();
 }
 
-void Perro::alimentar(){
+
+void Perro::alimentar() {
     hambre = 0;
     cout<<nombre<<" comio huesos."<<endl;
 }
 
-void Perro::higienizar(){
+
+void Perro::higienizar() {
     higiene = 100;
     }
 

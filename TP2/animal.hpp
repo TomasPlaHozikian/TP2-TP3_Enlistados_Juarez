@@ -4,8 +4,8 @@
 #include <iostream>
 #include <string>
 
-
 using namespace std;
+
 
 class Animal{
     protected:
@@ -14,8 +14,8 @@ class Animal{
         string tamanio;
         char especie;
         string personalidad;
-        float hambre;
-        float higiene;
+        int hambre;
+        int higiene;
     public:
         //PRE: -
         //POST: Inicializa animal con los parametros indicados.
@@ -62,6 +62,8 @@ class Animal{
         //PRE: -
         //POST: Devuelve un float que sera usado como multiplicador para reducir la higiene en base a personalidad.
         int modificador_higiene_personalidad();
+        virtual ~Animal();
 };
+
 
 #endif //ANIMAL_HPP
