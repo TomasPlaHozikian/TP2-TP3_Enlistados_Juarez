@@ -1,9 +1,8 @@
 #ifndef ARBOL_HPP
 #define ARBOL_HPP
 
-#include "nodo.hpp"
+#include "nodoarbol.hpp"
 
-typedef string Clave;
 
 class Arbol{
     private:
@@ -11,9 +10,9 @@ class Arbol{
     public:
         Arbol();
         void alta(Dato* d);//Agrega un dato al arbol
-        bool existe(Clave nombre);//Devuelve true si el dato existe.
-        Animal* consulta(Clave nombre);//Devuelve el nodo buscado.
-        void baja(Clave nombre);//Elimina dato donde se indique
+        bool existe(Clave clave);//Devuelve true si el dato existe.
+        Dato* consulta(Clave clave);//Devuelve el nodo buscado.
+        void baja(Clave clave);//Elimina dato donde se indique
         bool vacia();//Devuelve true si el arbol esta vacio.
         ~Arbol();
         //ITERADOR

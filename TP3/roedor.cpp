@@ -9,6 +9,7 @@ Roedor::Roedor(string nombre, int edad, string tamanio, char especie, string per
     this->personalidad = personalidad;
     hambre = 0;
     higiene = 100;
+    existe = true;
 }
 
 

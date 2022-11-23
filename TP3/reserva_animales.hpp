@@ -7,23 +7,24 @@
 
 class Reserva{
 private:
-    Lista* lista_animales;
+    Arbol* arbol_animales;
 public:
     //PRE: -
-    //POST: Se crea la reserva y su lista, y se carga esa lista con los animales del archivo.
+    //POST: Se crea la reserva y su arbol, y se carga esa lista con los animales del archivo.
     Reserva();
     //PRE: -
     //POST: Devuelve la lista de animales.
-    Lista* obtener_lista();
+    Arbol* obtener_arbol();
     //PRE: -
     //POST: Carga la lista con todos los animales del archivo.
-    void cargar_lista_reserva();
+    void cargar_arbol_reserva();
     //PRE: -
     //POST: Imprime todos los animales con sus datos y se modifica el hambre e higiene de los mismos.
     void listar_animales();
     //PRE: No debe existir el nombre del animal en la lista.
     //POST: Se le piden los datos del animal al usuario, se validan y se agrega el animal a la lista.
     void rescatar_animal();
+    /*
     //PRE: Debe existir el nombre del animal en la lista.
     //POST: Se muestra la informacion del animal ingresado por parametro.
     void mostrar_animal_por_nombre(string nombre);
@@ -55,6 +56,7 @@ public:
     void guardar();
     //PRE: -
     //POST: Elimina la lista con los animales y sus datos.
+    */
     ~Reserva();
 };
 

@@ -16,6 +16,7 @@ class Animal{
         string personalidad;
         int hambre;
         int higiene;
+        bool existe;
     public:
         //PRE: -
         //POST: Inicializa animal con los parametros indicados.
@@ -32,6 +33,8 @@ class Animal{
         //PRE: -
         //POST: Devuelve la especie del animal.
         char obtener_especie();
+        bool obtener_existencia();
+        void eliminar_existencia();
         //PRE: -
         //POST: Devuelve la especie del animal.
         string obtener_especie_full();

@@ -10,13 +10,13 @@ int main(){
     mostrar_menu_principal();
     opcion = pedir_opcion(6);
     while(opcion != 6){
-        system("clear");
+        //system("clear");
         ejecutar_opcion_principal(reserva, opcion);
         mostrar_menu_principal();
         opcion = pedir_opcion(6);
     }
-    reserva->guardar();
-    delete reserva->obtener_lista();
+    //reserva->guardar();
+    delete reserva->obtener_arbol();
     reserva->~Reserva();
     return 0;
 }

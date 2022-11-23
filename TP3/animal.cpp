@@ -22,6 +22,16 @@ char Animal::obtener_especie(){
 }
 
 
+bool Animal::obtener_existencia(){
+    return existe;
+}
+
+
+void Animal::eliminar_existencia(){
+    existe = false;
+}
+
+
 string Animal::obtener_especie_full(){
     string especie_full;
     if(especie == 'O') especie_full = "Conejo";

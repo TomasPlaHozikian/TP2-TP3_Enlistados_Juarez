@@ -188,26 +188,6 @@ void mostrar_personalidades(){
 }
 
 
-bool existe_animal(Lista* lista, string nombre){
-    bool resultado = false;
-    Animal* animal;
-    int cantidad_animales = lista->obtener_cantidad(), i = 1;
-
-    while(!resultado && i <= cantidad_animales){
-        animal = lista->consulta(i);
-
-        if (nombre == animal->obtener_nombre())
-        {
-            resultado = true;
-        }
-
-        i++;
-    }
-
-    return resultado;
-}
-
-
 Animal* creador_animal(string nombre, int edad, string tamanio, char especie, string personalidad){
     Animal* animal;
     if(especie == 'P'){
@@ -234,69 +214,6 @@ Animal* creador_animal(string nombre, int edad, string tamanio, char especie, st
     return animal;
 }
 
-
-void mostrar_adopciones_posibles(int espacio_disponible, Lista* lista_animales){
-    
-    lista_animales->iniciar();
-    cout << "LISTA DE ANIMALES QUE PUEDES ADOPTAR SEGUN TU ESPACIO DISPONIBLE" << endl;
-    int i = 1;
-    while(lista_animales->hay_siguiente()){
-        Animal* animal = lista_animales->siguiente();
-        
-        if(animal->obtener_tamanio() == "Diminuto" || animal->obtener_tamanio() == "Pequenio"){
-            cout<< i <<") Nombre: " << animal->obtener_nombre()<< endl <<
-            "Edad: "<< animal->obtener_edad()<< endl <<
-            "Tamanio: " << animal->obtener_tamanio()<< endl <<
-            "Especie: " << animal->obtener_especie_full()<< endl <<
-            "Personalidad: " << animal->obtener_personalidad()<< endl;
-        }
-        
-        else if (espacio_disponible >= 10 && animal->obtener_tamanio() == "Mediano"){
-            cout<< i <<") Nombre: " << animal->obtener_nombre()<< endl <<
-            "Edad: "<< animal->obtener_edad()<< endl <<
-            "Tamanio: " << animal->obtener_tamanio()<< endl <<
-            "Especie: " << animal->obtener_especie_full()<< endl <<
-            "Personalidad: " << animal->obtener_personalidad()<< endl;
-        }
-        
-        else if (espacio_disponible >= 20 && animal->obtener_tamanio() == "Grande"){
-            cout<< i <<") Nombre: " << animal->obtener_nombre()<< endl <<
-            "Edad: "<< animal->obtener_edad()<< endl <<
-            "Tamanio: " << animal->obtener_tamanio()<< endl <<
-            "Especie: " << animal->obtener_especie_full()<< endl <<
-            "Personalidad: " << animal->obtener_personalidad()<< endl;
-        }
-        
-        else if (espacio_disponible >= 50 && animal->obtener_tamanio() == "Gigante"){
-            cout<< i <<") Nombre: " << animal->obtener_nombre()<< endl <<
-            "Edad: "<< animal->obtener_edad()<< endl <<
-            "Tamanio: " << animal->obtener_tamanio()<< endl <<
-            "Especie: " << animal->obtener_especie_full()<< endl <<
-            "Personalidad: " << animal->obtener_personalidad()<< endl;
-        }
-        i++;
-    }
-}
-
-
-int obtener_posicion_animal(Lista* lista, string nombre){
-    bool resultado = false;
-    Animal* animal;
-    int i = 0;
-    int cantidad_animales = lista->obtener_cantidad();
-
-    while(!resultado && i <= cantidad_animales){
-        animal = lista->consulta(i);
-
-        if (nombre == animal->obtener_nombre())
-        {
-            resultado = true;
-        }
-        else i++;
-    }
-
-    return i;
-}
 
 
 int adoptar_o_cancelar(){

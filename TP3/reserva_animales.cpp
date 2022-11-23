@@ -6,17 +6,17 @@ using namespace std;
 
 
 Reserva::Reserva(){
-    lista_animales = new Lista();
-    cargar_lista_reserva();
+    arbol_animales = new Arbol();
+    cargar_arbol_reserva();
 }
 
 
-Lista* Reserva::obtener_lista(){
-    return lista_animales;
+Arbol* Reserva::obtener_arbol(){
+    return arbol_animales;
 }
 
 
-void Reserva::cargar_lista_reserva(){
+void Reserva::cargar_arbol_reserva(){
     ifstream archivo_reserva("Reserva.csv");
 
     if(!archivo_reserva.is_open()){
@@ -42,9 +42,8 @@ void Reserva::cargar_lista_reserva(){
         getline(archivo_reserva, aux5);
         personalidad=correccion_mayusculas(aux5);
 
-        Animal* animal = creador_animal(nombre, edad, tamanio, especie, personalidad);
-        posicion = lista_animales->obtener_cantidad() + 1;   
-        lista_animales->alta(animal, posicion);
+        Animal* animal = creador_animal(nombre, edad, tamanio, especie, personalidad);  
+        arbol_animales->alta(animal);
     }
     archivo_reserva.close();
 }
@@ -61,17 +60,17 @@ void Reserva::rescatar_animal(){
     getline(cin>>ws,ingreso);
     nombre = correccion_mayusculas(ingreso);
 
-    ya_existe = existe_animal(lista_animales,nombre);
+    ya_existe = arbol_animales->existe(nombre);
 
     while (ya_existe && !terminar)
     {
         cout<<"Ya existe un animal rescatado con ese nombre:"<<endl;
-        mostrar_animal_por_nombre(nombre);
+        //mostrar_animal_por_nombre(nombre);
         cout<<endl<<"Si quiere ingrese otro nombre, en caso contrario ingrese 1: ";
         getline(cin>>ws,ingreso);
         nombre = correccion_mayusculas(ingreso);
 
-        ya_existe = existe_animal(lista_animales,nombre);
+        ya_existe = arbol_animales->existe(nombre);
 
         if (nombre == "1")
         {
@@ -85,13 +84,12 @@ void Reserva::rescatar_animal(){
         tamanio=pedir_tamanio();
         especie=pedir_especie();
         personalidad=pedir_personalidad();
-        animal = creador_animal(nombre,edad,tamanio,especie,personalidad);
-        posicion = lista_animales->obtener_cantidad() + 1;   
-        lista_animales->alta(animal, posicion);
+        animal = creador_animal(nombre,edad,tamanio,especie,personalidad);   
+        arbol_animales->alta(animal);
     }   
 }
 
-
+/*
 void Reserva::listar_animales(){
     int i = 1;
     lista_animales->iniciar();
@@ -267,8 +265,8 @@ void Reserva::guardar(){
     }
     archivo.close();
 }
-
+*/
 
 Reserva::~Reserva(){
-    lista_animales->~Lista();
+    arbol_animales->~Arbol();
 }
