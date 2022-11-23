@@ -30,18 +30,21 @@ int pedir_opcion(int cantidad_opciones){
 
 
 void ejecutar_opcion_principal(Reserva* reserva, int opcion){
+    if (opcion == 2)
+    {
+        reserva->rescatar_animal();
+    }
+    /*
     switch (opcion)
     {
     case LISTAR_ANIMALES:
         reserva->listar_animales();
         reserva->modificador_hambre_higiene_animales();
         break;
-    
     case RESCATAR_ANIMAL:
         reserva->rescatar_animal();
-        reserva->modificador_hambre_higiene_animales();
+        //reserva->modificador_hambre_higiene_animales();
         break;
-    
     case BUSCAR_ANIMAL:
         reserva->buscar_animal();
         reserva->modificador_hambre_higiene_animales();
@@ -57,4 +60,5 @@ void ejecutar_opcion_principal(Reserva* reserva, int opcion){
         reserva->modificador_hambre_higiene_animales();
         break;
     }
+    */
 }

@@ -9,6 +9,7 @@ Caballo::Caballo(string nombre, int edad, string tamanio, char especie, string p
     this->personalidad = personalidad;
     hambre = 0;
     higiene = 100;
+    existe = true;
 }
 
 

@@ -9,6 +9,7 @@ Erizo::Erizo(string nombre, int edad, string tamanio, char especie, string perso
     this->personalidad = personalidad;
     hambre = 0;
     higiene = 100;
+    existe = true;
 }
 
 
