@@ -16,7 +16,6 @@ class Auto{
         void cargar_combustible_por_cantidad(int cantidad);
         void consumo_combustible();
         int obtener_combustible();
-        int modificador_terreno();
         ~Auto();
 };
 
