@@ -14,13 +14,14 @@ void Arbol::alta(Dato* d){
         Nodo* nuevo = new Nodo(d);
         raiz = nuevo;
     } 
-    else{
+    else {
         raiz->agregar(d);
-        if (raiz->hay_padre())
-        {
-            raiz->obtener_padre()->obtener_clave1()->mostrar();
-        }
-    } 
+    }
+    if (raiz->hay_padre())
+    {
+        Nodo* nueva_raiz = raiz->obtener_padre();
+        raiz = nueva_raiz;
+    }
 }
 
 

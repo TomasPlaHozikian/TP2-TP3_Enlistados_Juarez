@@ -66,6 +66,7 @@ class Nodo{
         //PRE: -
         //POST: Si tiene hijos los manda a eliminar, sino se elimina.
         void eliminarse_completo();
+        //Iterador
         void mostrar_siguiente();
         Nodo* dividir_nodo();
 };
