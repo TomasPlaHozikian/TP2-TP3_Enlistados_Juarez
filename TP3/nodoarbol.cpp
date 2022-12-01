@@ -122,38 +122,29 @@ void Nodo::asignar_hijo_izquierdo(Nodo* hijo_izquierdo_nuevo){
 }
 
 
-void Nodo::crear_hijos(Animal* izquierdo, Animal* medio, Animal* derecho){
-    hijo_izquierdo = new Nodo(izquierdo);
-    hijo_medio = new Nodo(derecho);
-    clave1 = medio;
-    hijo_izquierdo->asignar_padre(this);
-    hijo_medio->asignar_padre(this);
-    clave2 = 0;
-}
-
-
 void Nodo::derivar_agregar_a_hijos(Dato* nuevo){
-    if (!hay_clave2())
+    if (clave1->obtener_nombre() > nuevo->obtener_nombre())
     {
-        if (clave1->obtener_nombre() > nuevo->obtener_nombre())
-        {
-            hijo_izquierdo->agregar(nuevo);
-        }
-        else hijo_derecho->agregar(nuevo);
+        cout<<nuevo->obtener_nombre()<<" es menor que "<<clave1->obtener_nombre()<<endl;
+        hijo_izquierdo->agregar(nuevo);
     }
     else
     {
-        if (clave1->obtener_nombre() > nuevo->obtener_nombre())
-        {
-            hijo_izquierdo->agregar(nuevo);
-        }
-        else if (clave1->obtener_nombre() < nuevo->obtener_nombre() && nuevo->obtener_nombre()< clave2->obtener_nombre())
-        {
+        if (!hay_clave2()) {
+            cout<<nuevo->obtener_nombre()<<" es mayor que "<<clave1->obtener_nombre()<<endl;
             hijo_medio->agregar(nuevo);
         }
-        else
+        else 
         {
-            hijo_derecho->agregar(nuevo);
+            if (nuevo->obtener_nombre() < clave2->obtener_nombre())
+            {
+                cout<<nuevo->obtener_nombre()<<" es mayor que "<<clave1->obtener_nombre()<<" y menor que "<<clave2->obtener_nombre()<<endl;
+                hijo_medio->agregar(nuevo);
+            }
+            else {
+                cout<<nuevo->obtener_nombre()<<" es mayor que "<<clave2->obtener_nombre()<<endl;
+                hijo_derecho->agregar(nuevo);
+            }
         }
     }
 }
@@ -172,29 +163,37 @@ void Nodo::agregar_clave_a_padre(Animal* medio, Nodo* nodo_izquierdo, Nodo* nodo
     //Si no tiene nodo padre
     if (!nodo_izquierdo->hay_padre())
     {
+        cout<<"Pase por aca"<<endl;
         Nodo* padre_nuevo = new Nodo(medio);
         nodo_izquierdo->asignar_padre(padre_nuevo);
+        nodo_derecho->asignar_padre(padre_nuevo);
         padre_nuevo->asignar_hijo_izquierdo(nodo_izquierdo);
-        padre->asignar_hijo_medio(nodo_derecho);
+        padre_nuevo->asignar_hijo_medio(nodo_derecho);
     }
     //Si tiene nodo padre
     else {
         Nodo* nodo_padre = nodo_izquierdo->obtener_padre();
         //Si el nodo padre no tiene clave 2
         if (!nodo_padre->hay_clave2())
-        {   
-            if (nodo_padre->obtener_clave1()->obtener_nombre() < medio->obtener_nombre())
-            {
-                nodo_padre->agregar_clave2(medio);
-                nodo_padre->asignar_hijo_derecho(nodo_derecho);
-                nodo_padre->asignar_hijo_medio(nodo_izquierdo);
-            }
-            else
+        {
+            cout<<"El padre no tiene clave2"<<endl;
+            if (nodo_padre->obtener_clave1()->obtener_nombre() > medio->obtener_nombre())
             {
                 nodo_padre->agregar_clave2(medio);
                 nodo_padre->asignar_hijo_derecho(nodo_padre->obtener_medio());
                 nodo_padre->asignar_hijo_izquierdo(nodo_izquierdo);
                 nodo_padre->asignar_hijo_medio(nodo_derecho);
+                nodo_derecho->asignar_padre(nodo_padre);
+                nodo_izquierdo->asignar_padre(nodo_padre);
+                nodo_padre->obtener_derecho()->asignar_padre(nodo_padre);
+            }
+            else
+            {
+                nodo_padre->agregar_clave2(medio);
+                nodo_padre->asignar_hijo_derecho(nodo_derecho);
+                nodo_padre->asignar_hijo_medio(nodo_izquierdo);
+                nodo_derecho->asignar_padre(nodo_padre);
+                nodo_izquierdo->asignar_padre(nodo_padre);
             }
         }
         //Si el nodo padre tiene clave 2
@@ -207,14 +206,17 @@ void Nodo::agregar_clave_a_padre(Animal* medio, Nodo* nodo_izquierdo, Nodo* nodo
                 nodo_padre->eliminar_hijo_izquierdo();
                 medio_padre = nodo_padre->obtener_clave1();
                 nodo_padre->asignar_clave1(medio);
-                nuevo_nodo = new Nodo(nodo_padre->obtener_clave2());
+                nuevo_nodo = nodo_padre->dividir_nodo();
                 nuevo_nodo->asignar_hijo_medio(nodo_padre->obtener_derecho());
                 nuevo_nodo->asignar_hijo_izquierdo(nodo_padre->obtener_medio());
-                nodo_padre->eliminar_clave2();
+                nodo_padre->obtener_derecho()->asignar_padre(nuevo_nodo);
+                nodo_padre->obtener_medio()->asignar_padre(nuevo_nodo);
                 nodo_padre->eliminar_hijo_derecho();
                 nodo_padre->asignar_hijo_medio(nodo_derecho);
                 nodo_padre->asignar_hijo_izquierdo(nodo_izquierdo);
-                agregar_clave_a_padre(medio_padre, nodo_padre, nuevo_nodo);
+                nodo_derecho->asignar_padre(nodo_padre);
+                nodo_izquierdo->asignar_padre(nodo_padre);
+                nodo_padre->agregar_clave_a_padre(medio_padre, nodo_padre, nuevo_nodo);
             }
             else if (nodo_padre->obtener_clave1()->obtener_nombre() < medio->obtener_nombre() && medio->obtener_nombre()< nodo_padre->obtener_clave2()->obtener_nombre())
             {
@@ -222,9 +224,12 @@ void Nodo::agregar_clave_a_padre(Animal* medio, Nodo* nodo_izquierdo, Nodo* nodo
                 nuevo_nodo = new Nodo(nodo_padre->obtener_clave2());
                 nuevo_nodo->asignar_hijo_medio(nodo_padre->obtener_derecho());
                 nuevo_nodo->asignar_hijo_izquierdo(nodo_derecho);
+                nodo_padre->obtener_derecho()->asignar_padre(nuevo_nodo);
+                nodo_derecho->asignar_padre(nuevo_nodo);
                 nodo_padre->eliminar_clave2();
                 nodo_padre->eliminar_hijo_derecho();
                 nodo_padre->asignar_hijo_medio(nodo_izquierdo);
+                nodo_izquierdo->asignar_padre(nodo_padre);
                 agregar_clave_a_padre(medio, nodo_padre, nuevo_nodo);
             }
             else
@@ -234,6 +239,8 @@ void Nodo::agregar_clave_a_padre(Animal* medio, Nodo* nodo_izquierdo, Nodo* nodo
                 nuevo_nodo = new Nodo(nodo_padre->obtener_clave2());
                 nuevo_nodo->asignar_hijo_medio(nodo_derecho);
                 nuevo_nodo->asignar_hijo_izquierdo(nodo_izquierdo);
+                nodo_izquierdo->asignar_padre(nuevo_nodo);
+                nodo_derecho->asignar_padre(nuevo_nodo);
                 nodo_padre->eliminar_clave2();
                 nodo_padre->eliminar_hijo_derecho();
                 agregar_clave_a_padre(medio_padre, nodo_padre, nuevo_nodo);
@@ -269,7 +276,6 @@ void Nodo::agregar(Dato* nuevo){
         else if (clave1->obtener_nombre() < nuevo->obtener_nombre() && nuevo->obtener_nombre()< clave2->obtener_nombre())
         {
             nuevo_nodo = dividir_nodo();
-            eliminar_clave2();
             agregar_clave_a_padre(nuevo, this, nuevo_nodo);
         }
         else
@@ -285,6 +291,7 @@ void Nodo::agregar(Dato* nuevo){
 Nodo* Nodo::dividir_nodo(){
     Dato* clave_nuevo_nodo = clave2;
     Nodo* nuevo_nodo_derecho = new Nodo(clave_nuevo_nodo);
+    nuevo_nodo_derecho->asignar_padre(obtener_padre());
     clave2 = 0;
     return nuevo_nodo_derecho;
 }
@@ -344,23 +351,31 @@ Dato* Nodo::devolver_dato_por_clave(Clave clave){
 }
 
 
-void Nodo::mostrar_siguiente(){
+int Nodo::mostrar_siguiente(int contador){
     if (hay_izquierdo()){
-
-        hijo_izquierdo->mostrar_siguiente();
+        contador = hijo_izquierdo->mostrar_siguiente(contador);
+        cout<<contador<<")";
         clave1->mostrar();
-        hijo_medio->mostrar_siguiente();
+        contador ++;
+        contador = hijo_medio->mostrar_siguiente(contador);
         if(hay_derecho()){
+            cout<<contador<<")";
             clave2->mostrar();
-            hijo_derecho->mostrar_siguiente();
+            contador ++;
+            contador = hijo_derecho->mostrar_siguiente(contador);
         }
     } 
     else{
+        cout<<contador<<")";
         clave1->mostrar();
+        contador ++;
         if(hay_clave2()){
+            cout<<contador<<")";
             clave2->mostrar();
+            contador ++;
         }
     }
+    return contador;
 }
 
 

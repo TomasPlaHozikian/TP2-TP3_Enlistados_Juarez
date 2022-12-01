@@ -92,11 +92,7 @@ void Reserva::rescatar_animal(){
 
 
 void Reserva::listar_animales(){
-    arbol_animales->obtener_raiz()->obtener_clave2()->mostrar();
-    if(arbol_animales->obtener_raiz()->hay_padre()){
-    cout<<"tiene padre"<<endl;
-    arbol_animales->obtener_raiz()->obtener_padre()->obtener_clave1()->mostrar();
-    }
+    arbol_animales->obtener_raiz()->mostrar_siguiente(1);
     }
 
 
