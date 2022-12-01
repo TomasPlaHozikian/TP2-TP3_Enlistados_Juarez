@@ -8,6 +8,7 @@
 class Reserva{
 private:
     Arbol* arbol_animales;
+    Auto* auto1;
 public:
     //PRE: -
     //POST: Se crea la reserva y su arbol, y se carga esa lista con los animales del archivo.
@@ -57,6 +58,9 @@ public:
     //PRE: -
     //POST: Elimina la lista con los animales y sus datos.
     */
+    /*muestra la cantidad de combustible en el auto y le pregunta al usuario
+    si desea cargar el combustible del auto, el limite de combustible es 100.*/
+    void cargar_combustible();
     ~Reserva();
 };
 

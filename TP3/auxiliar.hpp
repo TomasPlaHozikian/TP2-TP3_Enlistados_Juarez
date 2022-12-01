@@ -9,6 +9,7 @@
 #include "gato.hpp"
 #include "lagartija.hpp"
 #include "roedor.hpp"
+#include "auto.hpp"
 
 using namespace std;
 

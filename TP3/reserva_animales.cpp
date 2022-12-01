@@ -7,6 +7,7 @@ using namespace std;
 
 Reserva::Reserva(){
     arbol_animales = new Arbol();
+    auto1 = new Auto();
     cargar_arbol_reserva();
 }
 
@@ -89,21 +90,13 @@ void Reserva::rescatar_animal(){
     }   
 }
 
-/*
+
 void Reserva::listar_animales(){
-    int i = 1;
-    lista_animales->iniciar();
-    cout<<"LISTA DE ANIMALES EN LA RESERVA"<<endl;
-    while(lista_animales->hay_siguiente()){
-        Animal* animal = lista_animales->siguiente();
-        cout<<i<<')';
-        animal->mostrar();
-        cout<<endl;
-        i++;
+    arbol_animales->obtener_raiz()->mostrar_siguiente(1);
     }
-}
 
 
+/*
 void Reserva::buscar_animal(){
     string ingreso, nombre;
     bool ya_existe=false;
@@ -266,6 +259,24 @@ void Reserva::guardar(){
     archivo.close();
 }
 */
+
+
+void Reserva::cargar_combustible(){
+    int cantidad = 0;
+    if(auto1->obtener_combustible() == 100){
+        cout<<"El auto ya tiene el tanque lleno"<<endl;
+    }
+    else{
+        cout << "Ingrese la cantidad de combustible que desea cargar: ";
+        cin >> cantidad;
+        while (cantidad <= 0 || cantidad > 100){
+            cout << "La cantidad ingresada es invalida."<<endl;
+            cout << "Ingrese la cantidad de combustible que desea cargar: ";
+        }
+        auto1->cargar_combustible_por_cantidad(cantidad);
+        }
+}
+
 
 Reserva::~Reserva(){
     arbol_animales->~Arbol();

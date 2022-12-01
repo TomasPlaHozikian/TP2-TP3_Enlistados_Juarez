@@ -5,14 +5,23 @@ Arbol::Arbol(){
     raiz = 0;
 }
 
+Nodo* Arbol::obtener_raiz(){
+    return raiz;
+}
 
 void Arbol::alta(Dato* d){
-    
     if (vacia()){
         Nodo* nuevo = new Nodo(d);
         raiz = nuevo;
     } 
-    else raiz->agregar(d);
+    else {
+        raiz->agregar(d);
+    }
+    if (raiz->hay_padre())
+    {
+        Nodo* nueva_raiz = raiz->obtener_padre();
+        raiz = nueva_raiz;
+    }
 }
 
 

@@ -12,6 +12,7 @@ enum OpcionMenuPrincipal {
     BUSCAR_ANIMAL,
     CUIDAR_ANIMAL,
     ADOPTAR_ANIMAL,
+    CARGAR_COMBUSTIBLE,
     SALIR
 };
 

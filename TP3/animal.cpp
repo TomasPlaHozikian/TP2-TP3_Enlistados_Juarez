@@ -67,7 +67,7 @@ void Animal::mostrar(){
     <<" Especie: "<<obtener_especie_full()
     <<" Personalidad: "<<personalidad<<endl
     <<" Nivel de Hambre: "<<hambre
-    <<" Nivel de Higiene: "<<higiene<<endl;
+    <<" Nivel de Higiene: "<<higiene<<endl<<endl;
 }
 
 

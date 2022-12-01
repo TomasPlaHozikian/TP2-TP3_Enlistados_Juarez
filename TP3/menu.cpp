@@ -11,7 +11,8 @@ void mostrar_menu_principal(){
     <<"3) Buscar animal." <<endl<<endl
     <<"4) Cuidar animales."<<endl<<endl
     <<"5) Adoptar animal."<<endl<<endl
-    <<"6) Guardar y salir."<<endl<<endl;
+    <<"6) Cargar combustible."<<endl<<endl
+    <<"7) Guardar y salir."<<endl<<endl;
 }
 
 
@@ -30,21 +31,20 @@ int pedir_opcion(int cantidad_opciones){
 
 
 void ejecutar_opcion_principal(Reserva* reserva, int opcion){
-    if (opcion == 2)
-    {
-        reserva->rescatar_animal();
-    }
-    /*
     switch (opcion)
     {
     case LISTAR_ANIMALES:
         reserva->listar_animales();
-        reserva->modificador_hambre_higiene_animales();
+        //reserva->modificador_hambre_higiene_animales();
         break;
     case RESCATAR_ANIMAL:
         reserva->rescatar_animal();
         //reserva->modificador_hambre_higiene_animales();
         break;
+    case CARGAR_COMBUSTIBLE:
+        reserva->cargar_combustible();
+        
+    /*
     case BUSCAR_ANIMAL:
         reserva->buscar_animal();
         reserva->modificador_hambre_higiene_animales();
@@ -59,6 +59,6 @@ void ejecutar_opcion_principal(Reserva* reserva, int opcion){
         reserva->adoptar_animal();
         reserva->modificador_hambre_higiene_animales();
         break;
+        */
     }
-    */
 }
