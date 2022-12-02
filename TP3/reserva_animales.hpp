@@ -1,7 +1,6 @@
 #ifndef RESERVA_ANIMALES_HPP
 #define RESERVA_ANIMALES_HPP
 
-#include <fstream>
 #include "auxiliar.hpp"
 
 

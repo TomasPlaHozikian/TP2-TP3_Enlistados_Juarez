@@ -87,6 +87,40 @@ int Animal::modificador_higiene_personalidad(){
 }
 
 
+void Animal::cuidar_animal(){
+    int opcion_de_animal = 0;
+    while (opcion_de_animal != 3)
+    {
+        mostrar();
+        cout<<"Seleccione opcion de cuidado: "<<endl
+        <<"1) Baniar"<<endl<<"2) Alimentar"<<endl<<"3) Saltear"<<endl;
+        cin>>opcion_de_animal;
+        switch(opcion_de_animal)
+        {
+        case(1):
+            higienizar();
+            break;
+        case(2):                    
+            alimentar();
+            break;
+        case(3):
+            cout<<"Se salteo al animal"<<endl;
+            break;
+        default: cout<<"No entendi, recuerde que su respuesta debe ser 1, 2 o 3."<<endl;
+        }
+    }
+}
+
+
+void Animal::guardar(ofstream archivo){
+    archivo << nombre <<','
+            <<edad<<','
+            <<tamanio<<','
+            <<especie<<','
+            <<personalidad<<endl;
+}
+
+
 Animal::~Animal(){
     cout<<"se borro el animal"<<endl;
 }
