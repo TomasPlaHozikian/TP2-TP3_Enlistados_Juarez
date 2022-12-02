@@ -94,6 +94,11 @@ class Nodo{
         //PRE: -
         //POST: Muestra todos los datos del arbol.
         int mostrar_todo(int contador);
+        void cuidar_animal_individual_nodo();
+        void alimentar_animales();
+        void higienizar_animales();
+        void modificador_hambre_higiene_animales_nodo();
+        void guardar_nodo(ofstream archivo);
         //---------------------------------------------------------------------------------------------------
         //ELIMINADORES
         

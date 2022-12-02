@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -65,6 +66,8 @@ class Animal{
         //PRE: -
         //POST: Devuelve un float que sera usado como multiplicador para reducir la higiene en base a personalidad.
         int modificador_higiene_personalidad();
+        void cuidar_animal();
+        void guardar(ofstream archivo);
         virtual ~Animal();
 };
 

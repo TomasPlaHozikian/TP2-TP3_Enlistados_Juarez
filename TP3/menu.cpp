@@ -47,12 +47,12 @@ void ejecutar_opcion_principal(Reserva* reserva, int opcion){
         reserva->buscar_animal();
         //reserva->modificador_hambre_higiene_animales();
         break;
-    /*
+    
     case CUIDAR_ANIMAL:
         reserva->cuidar_animales();
-        reserva->modificador_hambre_higiene_animales();
+        //reserva->modificador_hambre_higiene_animales();
         break;
-
+    /*
     case ADOPTAR_ANIMAL:
         reserva->adoptar_animal();
         reserva->modificador_hambre_higiene_animales();

@@ -123,42 +123,17 @@ void Reserva::mostrar_animal_por_nombre(string nombre){
 
 
 void Reserva::cuidar_animal_individual(){
-    int opcion_de_animal;
-    lista_animales->iniciar();
-    while(lista_animales->hay_siguiente()){
-        Animal* animal = lista_animales->siguiente();
-        animal->mostrar();
-        cout<<"Seleccione opcion de cuidado: "<<endl
-        <<"1) Baniar"<<endl<<"2) Alimentar"<<endl<<"3) Saltear"<<endl;
-        cin>>opcion_de_animal;
-        switch(opcion_de_animal){
-            case(1):
-                animal->higienizar();
-                break;
-            case(2):                    
-                animal->alimentar();
-                break;
-            case(3):
-                cout<<"Se salteo al animal"<<endl;
-                break;
-            }
-    }
+    arbol_animales->obtener_raiz()->cuidar_animal_individual_nodo();
 }
 
-/*
+
 void Reserva::alimentar_animales(){
-    lista_animales->iniciar();
-    while(lista_animales->hay_siguiente()){
-        lista_animales->siguiente()->alimentar();
-    }
+    arbol_animales->obtener_raiz()->alimentar_animales();
 }
 
 
 void Reserva::higienizar_animales(){
-    lista_animales->iniciar();
-    while(lista_animales->hay_siguiente()){
-        lista_animales->siguiente()->higienizar();
-    }
+    arbol_animales->obtener_raiz()->higienizar_animales();
 }
 
 
@@ -172,7 +147,8 @@ void Reserva::cuidar_animales(){
         <<"3) Baniar a todos"<<endl
         <<"4) Regresar a inicio"<<endl<<endl;
         cin>>opcion;
-        switch(opcion){
+        switch(opcion)
+        {
             case(1):
                 cuidar_animal_individual();
                 break;
@@ -182,11 +158,12 @@ void Reserva::cuidar_animales(){
             case(3):
                 higienizar_animales();
                 break;
-            }
+            default: cout<<"No entendi, recuerde que su respuesta debe ser 1, 2, 3 o 4."<<endl;
         }
+    }
 }
 
-
+/*
 void Reserva::adoptar_animal(){
     int espacio_disponible, opcion_elegida;
     string espacio;
@@ -228,31 +205,19 @@ void Reserva::adoptar_animal(){
         lista_animales->baja(pos);
     }
 }
-
+*/
 
 void Reserva::modificador_hambre_higiene_animales(){
-    lista_animales->iniciar();
-    while(lista_animales->hay_siguiente()){
-        lista_animales->siguiente()->modificador_hambre_higiene();
-    }
-
+    arbol_animales->obtener_raiz()->modificador_hambre_higiene_animales_nodo();
 }
 
 
 void Reserva::guardar(){
     ofstream archivo("Reserva.csv");
-    lista_animales->iniciar();
-    while(lista_animales->hay_siguiente()){
-        Animal* animal = lista_animales->siguiente();
-        archivo<<animal->obtener_nombre()<<','
-        <<animal->obtener_edad()<<','
-        <<animal->obtener_tamanio()<<','
-        <<animal->obtener_especie()<<','
-        <<animal->obtener_personalidad()<<endl;
-    }
+    
     archivo.close();
 }
-*/
+
 
 
 void Reserva::cargar_combustible(){
