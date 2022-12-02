@@ -43,13 +43,11 @@ void ejecutar_opcion_principal(Reserva* reserva, int opcion){
         break;
     case CARGAR_COMBUSTIBLE:
         reserva->cargar_combustible();
-        
-    /*
     case BUSCAR_ANIMAL:
         reserva->buscar_animal();
-        reserva->modificador_hambre_higiene_animales();
+        //reserva->modificador_hambre_higiene_animales();
         break;
-
+    /*
     case CUIDAR_ANIMAL:
         reserva->cuidar_animales();
         reserva->modificador_hambre_higiene_animales();

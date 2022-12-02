@@ -25,7 +25,6 @@ public:
     //PRE: No debe existir el nombre del animal en la lista.
     //POST: Se le piden los datos del animal al usuario, se validan y se agrega el animal a la lista.
     void rescatar_animal();
-    /*
     //PRE: Debe existir el nombre del animal en la lista.
     //POST: Se muestra la informacion del animal ingresado por parametro.
     void mostrar_animal_por_nombre(string nombre);
@@ -55,12 +54,11 @@ public:
     //PRE: -
     //POST: Se guarda el archivo animales.csv con las modificaciones realizadas y se cierra el programa.
     void guardar();
-    //PRE: -
-    //POST: Elimina la lista con los animales y sus datos.
-    */
     /*muestra la cantidad de combustible en el auto y le pregunta al usuario
     si desea cargar el combustible del auto, el limite de combustible es 100.*/
     void cargar_combustible();
+    //PRE: -
+    //POST: Elimina la lista con los animales y sus datos.
     ~Reserva();
 };
 
