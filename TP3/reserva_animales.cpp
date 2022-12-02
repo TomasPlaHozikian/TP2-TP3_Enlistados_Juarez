@@ -50,35 +50,37 @@ void Reserva::cargar_arbol_reserva(){
 }
 
 
+void Reserva::listar_animales(){
+    arbol_animales->obtener_raiz()->mostrar_todo(1);
+}
+
+
 void Reserva::rescatar_animal(){
     Animal* animal;
-    string nombre, tamanio, personalidad, ingreso;
+    string nombre, tamanio, personalidad;
     bool ya_existe=false, terminar=false;
     char especie;
     int edad, posicion;
 
     cout<<"Ingrese el nombre del animal: ";
-    getline(cin>>ws,ingreso);
-    nombre = correccion_mayusculas(ingreso);
-
+    cin>>nombre;
+    nombre = correccion_mayusculas(nombre);
+    
     ya_existe = arbol_animales->existe(nombre);
 
     while (ya_existe && !terminar)
     {
         cout<<"Ya existe un animal rescatado con ese nombre:"<<endl;
-        //mostrar_animal_por_nombre(nombre);
+        mostrar_animal_por_nombre(nombre);
         cout<<endl<<"Si quiere ingrese otro nombre, en caso contrario ingrese 1: ";
-        getline(cin>>ws,ingreso);
-        nombre = correccion_mayusculas(ingreso);
+        cin>>nombre;
+        nombre = correccion_mayusculas(nombre);
 
         ya_existe = arbol_animales->existe(nombre);
 
-        if (nombre == "1")
-        {
-            terminar = true;
-        }        
+        if (nombre == "1") terminar = true;
     }
-
+    
     if (!terminar)
     {
         edad=pedir_edad();
@@ -91,12 +93,6 @@ void Reserva::rescatar_animal(){
 }
 
 
-void Reserva::listar_animales(){
-    arbol_animales->obtener_raiz()->mostrar_siguiente(1);
-    }
-
-
-/*
 void Reserva::buscar_animal(){
     string ingreso, nombre;
     bool ya_existe=false;
@@ -106,25 +102,23 @@ void Reserva::buscar_animal(){
 
     nombre = correccion_mayusculas(nombre); 
 
-    ya_existe = existe_animal(lista_animales, nombre);
+    ya_existe = arbol_animales->existe(nombre);
 
     while(!ya_existe){
         cout << "El nombre no existe." << endl << "Ingrese otro nombre: " << endl;
         cin>>nombre; 
         nombre = correccion_mayusculas(nombre);
 
-        ya_existe = existe_animal(lista_animales, nombre);
+        ya_existe = arbol_animales->existe(nombre);
     }
     cout<<endl;
     mostrar_animal_por_nombre(nombre);
-
 }
 
 
 void Reserva::mostrar_animal_por_nombre(string nombre){
-    int pos;
-    pos = obtener_posicion_animal(lista_animales, nombre);
-    lista_animales->consulta(pos)->mostrar();
+    Animal* animal = arbol_animales->obtener_raiz()->devolver_dato_por_clave(nombre);
+    animal->mostrar();
 }
 
 
@@ -151,7 +145,7 @@ void Reserva::cuidar_animal_individual(){
     }
 }
 
-
+/*
 void Reserva::alimentar_animales(){
     lista_animales->iniciar();
     while(lista_animales->hay_siguiente()){

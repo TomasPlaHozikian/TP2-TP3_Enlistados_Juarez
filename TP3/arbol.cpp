@@ -32,8 +32,15 @@ void Arbol::baja(Clave clave){
 
 bool Arbol::existe(Clave nombre){
     bool existe;
-    existe = raiz->verificar_existencia_de_la_clave(nombre);
+    existe = raiz->verificar_existencia_de_la_clave(nombre, false);
     return existe;
+}
+
+
+Dato* Arbol::devuelve_dato_por_clave(Clave clave){
+    Dato* dato;
+    dato = raiz->devolver_dato_por_clave(clave);
+    return dato;
 }
 
 
@@ -48,6 +55,5 @@ bool Arbol::vacia(){
 
 
 Arbol::~Arbol(){
-    raiz->eliminarse_completo();
     delete raiz;
 }

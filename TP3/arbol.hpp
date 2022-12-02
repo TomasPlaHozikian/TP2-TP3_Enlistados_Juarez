@@ -12,6 +12,7 @@ class Arbol{
         Nodo* obtener_raiz();
         void alta(Dato* d);//Agrega un dato al arbol
         bool existe(Clave clave);//Devuelve true si el dato existe.
+        Dato* devuelve_dato_por_clave(Clave clave);
         Dato* consulta(Clave clave);//Devuelve el nodo buscado.
         void baja(Clave clave);//Elimina dato donde se indique
         bool vacia();//Devuelve true si el arbol esta vacio.
