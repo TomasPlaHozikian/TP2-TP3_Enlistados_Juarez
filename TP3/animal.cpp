@@ -112,7 +112,41 @@ void Animal::cuidar_animal(){
 }
 
 
-void Animal::guardar(ofstream archivo){
+int Animal::mostrar_adopciones_posibles(int espacio_disponible, int contador){
+    if (espacio_disponible <= 10){
+        if (tamanio == "Pequenio"){
+            cout<<contador<<")";
+            mostrar();
+            contador ++;
+        } 
+        else if (espacio_disponible <= 2 && tamanio == "Diminuto"){
+            cout<<contador<<")";
+            mostrar();
+            contador ++;
+        }
+    }
+    if (espacio_disponible >= 10){
+        if (tamanio == "Mediano"){
+            cout<<contador<<")";
+            mostrar();
+            contador ++;
+        } 
+        else if (espacio_disponible >= 20 && tamanio == "Grande"){
+            cout<<contador<<")";
+            mostrar();
+            contador ++;
+        }
+        else if (espacio_disponible >= 50 && tamanio == "Gigante"){
+            cout<<contador<<")";
+            mostrar();
+            contador ++;
+        }
+    }
+    return contador;
+}
+
+
+void Animal::guardar(ofstream &archivo){
     archivo << nombre <<','
             <<edad<<','
             <<tamanio<<','
@@ -122,5 +156,5 @@ void Animal::guardar(ofstream archivo){
 
 
 Animal::~Animal(){
-    cout<<"se borro el animal"<<endl;
+
 }

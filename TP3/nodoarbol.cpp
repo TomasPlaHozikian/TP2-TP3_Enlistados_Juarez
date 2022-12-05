@@ -264,17 +264,13 @@ void Nodo::asignar_padre_a_los_hijos(){
 
 
 bool Nodo::verificar_existencia_de_la_clave(Clave clave, bool existe){
-    if (!existe && clave == clave1->obtener_nombre()) existe = true;
-    else if (!existe && hay_clave2()) if (clave == clave2->obtener_nombre()) existe = true;
-    else if (!existe && hay_hijo_medio())
+    if (!existe)
     {
-        if (!existe && clave < clave1->obtener_nombre()) existe = hijo_izquierdo->verificar_existencia_de_la_clave(clave, existe);
-        else if (hay_clave2()) 
-        {
-            if (clave < clave2->obtener_nombre()) existe = hijo_medio->verificar_existencia_de_la_clave(clave, existe);
-            else existe = hijo_derecho->verificar_existencia_de_la_clave(clave, existe);
-        }
-        else existe = hijo_medio->verificar_existencia_de_la_clave(clave, existe);
+        if (clave1->obtener_existencia()) if (clave1->obtener_nombre() == clave) existe = true;
+        if (hay_clave2()) if (clave2->obtener_existencia() && clave2->obtener_nombre() == clave) existe = true;
+        if (hay_hijo_izquierdo()) existe = hijo_izquierdo->verificar_existencia_de_la_clave(clave, existe);
+        if (hay_hijo_medio()) existe = hijo_medio->verificar_existencia_de_la_clave(clave, existe);
+        if (hay_hijo_derecho()) existe = hijo_derecho->verificar_existencia_de_la_clave(clave, existe);
     }
     return existe;
 }
@@ -355,7 +351,17 @@ void Nodo::modificador_hambre_higiene_animales_nodo(){
 }
 
 
-void Nodo::guardar_nodo(ofstream archivo){
+int Nodo::mostrar_adopciones_posibles_nodo(int espacio_disponible, int contador){
+    if (hay_hijo_izquierdo()) contador = hijo_izquierdo->mostrar_adopciones_posibles_nodo(espacio_disponible, contador);
+    if (clave1->obtener_existencia()) contador = clave1->mostrar_adopciones_posibles(espacio_disponible, contador);
+    if (hay_hijo_medio()) contador = hijo_medio->mostrar_adopciones_posibles_nodo(espacio_disponible, contador);
+    if (hay_clave2()) if (clave2->obtener_existencia()) contador = clave2->mostrar_adopciones_posibles(espacio_disponible, contador);
+    if (hay_hijo_derecho()) contador = hijo_derecho->mostrar_adopciones_posibles_nodo(espacio_disponible, contador);
+    return contador;
+}
+
+
+void Nodo::guardar_nodo(ofstream &archivo){
     if (hay_hijo_izquierdo()) hijo_izquierdo->guardar_nodo(archivo);
     if (clave1->obtener_existencia()) clave1->guardar(archivo);
     if (hay_hijo_medio()) hijo_medio->guardar_nodo(archivo);
@@ -373,7 +379,7 @@ void Nodo::baja(Clave clave){
     }
     else
     {
-        if (clave2->obtener_nombre() == clave) clave1->eliminar_existencia();
+        if (clave2->obtener_nombre() == clave) clave2->eliminar_existencia();
         else if (clave1->obtener_nombre() > clave) hijo_izquierdo->baja(clave);
         else if (clave1->obtener_nombre() < clave && clave < clave2->obtener_nombre()) hijo_medio->baja(clave);
         else hijo_derecho->baja(clave);

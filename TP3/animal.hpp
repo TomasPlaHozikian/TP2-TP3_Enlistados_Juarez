@@ -67,7 +67,8 @@ class Animal{
         //POST: Devuelve un float que sera usado como multiplicador para reducir la higiene en base a personalidad.
         int modificador_higiene_personalidad();
         void cuidar_animal();
-        void guardar(ofstream archivo);
+        int mostrar_adopciones_posibles(int espacio_disponible, int contador);
+        void guardar(ofstream &archivo);
         virtual ~Animal();
 };
 

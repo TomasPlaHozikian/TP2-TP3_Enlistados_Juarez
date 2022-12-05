@@ -53,6 +53,7 @@ public:
     //PRE: -
     //POST: Se guarda el archivo animales.csv con las modificaciones realizadas y se cierra el programa.
     void guardar();
+    void mostrar_adopciones_posibles(int espacio_disponible);
     /*muestra la cantidad de combustible en el auto y le pregunta al usuario
     si desea cargar el combustible del auto, el limite de combustible es 100.*/
     void cargar_combustible();

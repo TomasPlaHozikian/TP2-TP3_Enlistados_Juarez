@@ -163,7 +163,7 @@ void Reserva::cuidar_animales(){
     }
 }
 
-/*
+
 void Reserva::adoptar_animal(){
     int espacio_disponible, opcion_elegida;
     string espacio;
@@ -174,10 +174,11 @@ void Reserva::adoptar_animal(){
     
     while (espacio_disponible <= 0){
         cout << "El tamanio ingresado es invalido." << endl << "Ingresar tamanio disponible para el animal en metros cuadrados: " << endl;
-        cin >> espacio_disponible;
+        getline(cin>>ws,espacio);
+        espacio_disponible = stoi(espacio);
     }
     
-    mostrar_adopciones_posibles(espacio_disponible, lista_animales);
+    arbol_animales->obtener_raiz()->mostrar_adopciones_posibles_nodo(espacio_disponible, 1);
     cout<<endl<<endl;
     opcion_elegida = adoptar_o_cancelar();
 
@@ -187,25 +188,25 @@ void Reserva::adoptar_animal(){
 
     else{
         string nombre, ingreso;
-        bool existe = false;
+        bool existe = false, tamanio_correcto = false;
+        Animal* animal;
         int pos;
         cout << "GENIAL! Ingrese el nombre del animal que desea adoptar: ";
         getline(cin>>ws,ingreso);
         nombre = correccion_mayusculas(ingreso);
-        existe = existe_animal(lista_animales, nombre);
+        existe = arbol_animales->existe(nombre);
 
         while (!existe){
             cout << "No se encontro un animal con ese nombre, por favor vuelva a intentarlo: ";
             getline(cin>>ws,ingreso);
             nombre = correccion_mayusculas(ingreso);
-            existe = existe_animal(lista_animales, nombre);
+            existe = arbol_animales->obtener_raiz()->verificar_existencia_de_la_clave(nombre, false);
         }
 
-        pos = obtener_posicion_animal(lista_animales, nombre);
-        lista_animales->baja(pos);
+        arbol_animales->baja(nombre);
     }
 }
-*/
+
 
 void Reserva::modificador_hambre_higiene_animales(){
     arbol_animales->obtener_raiz()->modificador_hambre_higiene_animales_nodo();
@@ -214,10 +215,14 @@ void Reserva::modificador_hambre_higiene_animales(){
 
 void Reserva::guardar(){
     ofstream archivo("Reserva.csv");
-    
+    arbol_animales->obtener_raiz()->guardar_nodo(archivo);
     archivo.close();
 }
 
+
+void Reserva::mostrar_adopciones_posibles(int espacio_disponible){
+    arbol_animales->obtener_raiz()->mostrar_adopciones_posibles_nodo(espacio_disponible, 1);
+}
 
 
 void Reserva::cargar_combustible(){
