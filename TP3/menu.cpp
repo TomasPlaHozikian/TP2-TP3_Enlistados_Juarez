@@ -35,28 +35,28 @@ void ejecutar_opcion_principal(Reserva* reserva, int opcion){
     {
     case LISTAR_ANIMALES:
         reserva->listar_animales();
-        //reserva->modificador_hambre_higiene_animales();
+        reserva->modificador_hambre_higiene_animales();
         break;
     case RESCATAR_ANIMAL:
         reserva->rescatar_animal();
-        //reserva->modificador_hambre_higiene_animales();
+        reserva->modificador_hambre_higiene_animales();
         break;
     case CARGAR_COMBUSTIBLE:
         reserva->cargar_combustible();
+        break;
     case BUSCAR_ANIMAL:
         reserva->buscar_animal();
-        //reserva->modificador_hambre_higiene_animales();
+        reserva->modificador_hambre_higiene_animales();
         break;
     
     case CUIDAR_ANIMAL:
         reserva->cuidar_animales();
-        //reserva->modificador_hambre_higiene_animales();
+        reserva->modificador_hambre_higiene_animales();
         break;
-    /*
     case ADOPTAR_ANIMAL:
         reserva->adoptar_animal();
         reserva->modificador_hambre_higiene_animales();
         break;
-        */
+    default: cout<<"No entendi, recuerde que su respuesta debe estar entre 1 y 7."<<endl;
     }
 }

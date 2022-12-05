@@ -98,7 +98,8 @@ class Nodo{
         void alimentar_animales();
         void higienizar_animales();
         void modificador_hambre_higiene_animales_nodo();
-        void guardar_nodo(ofstream archivo);
+        int mostrar_adopciones_posibles_nodo(int espacio_disponible, int contador);
+        void guardar_nodo(ofstream &archivo);
         //---------------------------------------------------------------------------------------------------
         //ELIMINADORES
         
