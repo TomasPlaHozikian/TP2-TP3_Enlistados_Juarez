@@ -6,17 +6,17 @@ using namespace std;
 
 int main(){
     int opcion;
+    bool terminar = false;
     Reserva* reserva = new Reserva();
-    mostrar_menu_principal();
-    opcion = pedir_opcion(7);
-    while(opcion != 7){
+    opcion = 1;
+    while(opcion != 7 && !terminar){
         //system("clear");
-        ejecutar_opcion_principal(reserva, opcion);
         mostrar_menu_principal();
         opcion = pedir_opcion(7);
+        terminar = ejecutar_opcion_principal(reserva, opcion);
     }
-    //reserva->guardar();
-    delete reserva->obtener_arbol();
+
+    reserva->guardar();
     reserva->~Reserva();
     return 0;
 }

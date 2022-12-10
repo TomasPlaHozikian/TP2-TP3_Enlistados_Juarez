@@ -19,6 +19,20 @@ string correccion_mayusculas(string palabra){
 }
 
 
+int pedir_opcion(int cantidad_opciones){
+    int opcion_elegida;
+    cout<<endl<<"Ingrese el numero de la opcion elegida: ";
+    cin>>opcion_elegida;
+
+    while(opcion_elegida < 1 || opcion_elegida > cantidad_opciones){
+        cout << "La opcion elegida no es una opcion valida, por favor ingrese otra opcion: ";
+        cin >> opcion_elegida;
+    }
+
+    return opcion_elegida;
+}
+
+
 int pedir_edad(){
     string ingreso, limpio;
     int edad;

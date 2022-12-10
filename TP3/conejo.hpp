@@ -10,6 +10,8 @@ class Conejo : public Animal{
         void modificador_hambre_higiene();
         void alimentar();
         void higienizar();
+        void mostrar();
+        void mostrar(bool mostrar_adoptado);
 };
 
 

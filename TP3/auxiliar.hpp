@@ -31,6 +31,9 @@ void mostrar_tamanios();
 //POST: Valida que la especie ingresada este entre las opciones validas y la devuelve.
 char pedir_especie();
 //PRE: -
+//POST: Devuelve una opcion valida.
+int pedir_opcion(int cantidad_opciones);
+//PRE: -
 //POST: Muestra la lista de especies validas.
 void mostrar_especies();
 //PRE: -

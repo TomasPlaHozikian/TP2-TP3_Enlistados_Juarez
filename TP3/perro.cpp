@@ -10,6 +10,7 @@ Perro::Perro(string nombre, int edad, string tamanio, char especie, string perso
     hambre = 0;
     higiene = 100;
     existe = true;
+    escapado = false;
 }
 
 
@@ -28,4 +29,28 @@ void Perro::alimentar(){
 void Perro::higienizar(){
     higiene = 100;
     }
+   
 
+void Perro::mostrar(){
+    cout<<" Nombre: "<<nombre
+    <<" Edad: "<<edad
+    <<" Tamanio: "<<tamanio
+    <<" Especie: Perro"
+    <<" Personalidad: "<<personalidad<<endl
+    <<" Nivel de Hambre: "<<hambre
+    <<" Nivel de Higiene: "<<higiene<<endl;
+}
+
+
+void Perro::mostrar(bool mostrar_adoptado){
+    cout<<" Nombre: "<<nombre
+    <<" Edad: "<<edad
+    <<" Tamanio: "<<tamanio
+    <<" Especie: Perro"
+    <<" Personalidad: "<<personalidad<<endl
+    <<" Nivel de Hambre: "<<hambre
+    <<" Nivel de Higiene: "<<higiene<<endl;
+    if (escapado) cout<<" ESCAPADO"<<endl;
+    else if (!existe) cout<<" ADOPTADO"<<endl;
+    else cout<<endl;
+} 

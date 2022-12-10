@@ -10,6 +10,7 @@ Roedor::Roedor(string nombre, int edad, string tamanio, char especie, string per
     hambre = 0;
     higiene = 100;
     existe = true;
+    escapado = false;
 }
 
 
@@ -29,3 +30,28 @@ void Roedor::higienizar(){
     higiene = 100;
     cout<<nombre<<" no requiere ducha."<<endl;
     }
+       
+
+void Roedor::mostrar(){
+    cout<<" Nombre: "<<nombre
+    <<" Edad: "<<edad
+    <<" Tamanio: "<<tamanio
+    <<" Especie: Roedor"
+    <<" Personalidad: "<<personalidad<<endl
+    <<" Nivel de Hambre: "<<hambre
+    <<" Nivel de Higiene: "<<higiene<<endl;
+}
+
+
+void Roedor::mostrar(bool mostrar_adoptado){
+    cout<<" Nombre: "<<nombre
+    <<" Edad: "<<edad
+    <<" Tamanio: "<<tamanio
+    <<" Especie: Roedor"
+    <<" Personalidad: "<<personalidad<<endl
+    <<" Nivel de Hambre: "<<hambre
+    <<" Nivel de Higiene: "<<higiene<<endl;
+    if (escapado) cout<<" ESCAPADO"<<endl;
+    else if (!existe) cout<<" ADOPTADO"<<endl;
+    else cout<<endl;
+} 

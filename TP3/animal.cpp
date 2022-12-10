@@ -2,6 +2,11 @@
 #include <string>
 
 
+void Animal::cambiar_nombre(string nombre){
+    this->nombre = nombre;
+}
+
+
 string Animal::obtener_nombre(){
     return nombre;
 }
@@ -29,6 +34,11 @@ bool Animal::obtener_existencia(){
 
 void Animal::eliminar_existencia(){
     existe = false;
+}
+
+
+void Animal::animal_escapado(){
+    escapado = true;
 }
 
 
@@ -60,17 +70,6 @@ int Animal::obtener_higiene(){
 }
 
 
-void Animal::mostrar(){
-    cout<<" Nombre: "<<nombre
-    <<" Edad: "<<edad
-    <<" Tamanio: "<<tamanio
-    <<" Especie: "<<obtener_especie_full()
-    <<" Personalidad: "<<personalidad<<endl
-    <<" Nivel de Hambre: "<<hambre
-    <<" Nivel de Higiene: "<<higiene<<endl;
-}
-
-
 int Animal::modificador_alimento_personalidad(){
     int modificador = 10;
     if(personalidad == "Dormilon") modificador = 5;
@@ -87,6 +86,74 @@ int Animal::modificador_higiene_personalidad(){
 }
 
 
+void Animal::cuidar_animal(){
+    int opcion_de_animal = 0;
+    while (opcion_de_animal != 3)
+    {
+        mostrar();
+        cout<<"Seleccione opcion de cuidado: "<<endl
+        <<"1) Baniar"<<endl<<"2) Alimentar"<<endl<<"3) Saltear"<<endl;
+        cin>>opcion_de_animal;
+        switch(opcion_de_animal)
+        {
+        case(1):
+            higienizar();
+            break;
+        case(2):                    
+            alimentar();
+            break;
+        case(3):
+            cout<<"Se salteo al animal"<<endl;
+            break;
+        default: cout<<"No entendi, recuerde que su respuesta debe ser 1, 2 o 3."<<endl;
+        }
+    }
+}
+
+
+int Animal::mostrar_adopciones_posibles(int espacio_disponible, int contador){
+    if (espacio_disponible <= 10){
+        if (tamanio == "Pequenio"){
+            cout<<contador<<")";
+            mostrar();
+            contador ++;
+        } 
+        else if (espacio_disponible <= 2 && tamanio == "Diminuto"){
+            cout<<contador<<")";
+            mostrar();
+            contador ++;
+        }
+    }
+    if (espacio_disponible >= 10){
+        if (tamanio == "Mediano"){
+            cout<<contador<<")";
+            mostrar();
+            contador ++;
+        } 
+        else if (espacio_disponible >= 20 && tamanio == "Grande"){
+            cout<<contador<<")";
+            mostrar();
+            contador ++;
+        }
+        else if (espacio_disponible >= 50 && tamanio == "Gigante"){
+            cout<<contador<<")";
+            mostrar();
+            contador ++;
+        }
+    }
+    return contador;
+}
+
+
+void Animal::guardar(ofstream &archivo){
+    archivo << nombre <<','
+            <<edad<<','
+            <<tamanio<<','
+            <<especie<<','
+            <<personalidad<<endl;
+}
+
+
 Animal::~Animal(){
-    cout<<"se borro el animal"<<endl;
+
 }

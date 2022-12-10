@@ -10,6 +10,7 @@ Caballo::Caballo(string nombre, int edad, string tamanio, char especie, string p
     hambre = 0;
     higiene = 100;
     existe = true;
+    escapado = false;
 }
 
 
@@ -25,7 +26,32 @@ void Caballo::alimentar(){
 }
 
 
+
 void Caballo::higienizar(){
     higiene = 100;
-    }
-    
+}
+   
+
+void Caballo::mostrar(){
+    cout<<" Nombre: "<<nombre
+    <<" Edad: "<<edad
+    <<" Tamanio: "<<tamanio
+    <<" Especie: Caballo"
+    <<" Personalidad: "<<personalidad<<endl
+    <<" Nivel de Hambre: "<<hambre
+    <<" Nivel de Higiene: "<<higiene<<endl;
+}
+
+
+void Caballo::mostrar(bool mostrar_adoptado){
+    cout<<" Nombre: "<<nombre
+    <<" Edad: "<<edad
+    <<" Tamanio: "<<tamanio
+    <<" Especie: Caballo"
+    <<" Personalidad: "<<personalidad<<endl
+    <<" Nivel de Hambre: "<<hambre
+    <<" Nivel de Higiene: "<<higiene<<endl;
+    if (escapado) cout<<" ESCAPADO"<<endl;
+    else if (!existe) cout<<" ADOPTADO"<<endl;
+    else cout<<endl;
+} 

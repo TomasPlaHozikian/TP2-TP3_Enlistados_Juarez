@@ -16,49 +16,40 @@ void mostrar_menu_principal(){
 }
 
 
-int pedir_opcion(int cantidad_opciones){
-    int opcion_elegida;
-    cout<<endl<<"Ingrese el numero de la opcion elegida: ";
-    cin>>opcion_elegida;
-
-    while(opcion_elegida < 1 || opcion_elegida > cantidad_opciones){
-        cout << "La opcion elegida no es una opcion valida, por favor ingrese otra opcion: ";
-        cin >> opcion_elegida;
-    }
-
-    return opcion_elegida;
-}
-
-
-void ejecutar_opcion_principal(Reserva* reserva, int opcion){
+bool ejecutar_opcion_principal(Reserva* reserva, int opcion){
+    bool terminar = false;
     switch (opcion)
     {
     case LISTAR_ANIMALES:
         reserva->listar_animales();
-        //reserva->modificador_hambre_higiene_animales();
+        reserva->modificador_hambre_higiene_animales();
         break;
     case RESCATAR_ANIMAL:
         reserva->rescatar_animal();
-        //reserva->modificador_hambre_higiene_animales();
+        reserva->modificador_hambre_higiene_animales();
         break;
     case CARGAR_COMBUSTIBLE:
         reserva->cargar_combustible();
-        
-    /*
+        break;
     case BUSCAR_ANIMAL:
         reserva->buscar_animal();
         reserva->modificador_hambre_higiene_animales();
         break;
-
+    
     case CUIDAR_ANIMAL:
         reserva->cuidar_animales();
         reserva->modificador_hambre_higiene_animales();
         break;
-
     case ADOPTAR_ANIMAL:
         reserva->adoptar_animal();
         reserva->modificador_hambre_higiene_animales();
         break;
-        */
+    default: cout<<"Ha finalizado el programa."<<endl;
     }
+    if (reserva->obtener_escapados() >= 3)
+    {
+        cout<<"Su partida se termino porque se escaparon 3 o mas animales."<<endl;
+        terminar = true;
+    }
+    return terminar;
 }
