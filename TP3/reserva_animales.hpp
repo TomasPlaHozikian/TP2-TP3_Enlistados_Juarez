@@ -2,12 +2,14 @@
 #define RESERVA_ANIMALES_HPP
 
 #include "auxiliar.hpp"
+#include "mapa.hpp"
 
 
 class Reserva{
 private:
     Arbol* arbol_animales;
-    Auto* auto1;
+    Mapa* mapa;
+    int escapados;
 public:
     //PRE: -
     //POST: Se crea la reserva y su arbol, y se carga esa lista con los animales del archivo.
@@ -15,6 +17,12 @@ public:
     //PRE: -
     //POST: Devuelve la lista de animales.
     Arbol* obtener_arbol();
+    //PRE: -
+    //POST: Devuelve el mapa.
+    Mapa* obtener_mapa();
+    //PRE:-
+    //POST: Devuelve la cantidad de animales que han escapado.
+    int obtener_escapados();
     //PRE: -
     //POST: Carga la lista con todos los animales del archivo.
     void cargar_arbol_reserva();
@@ -30,12 +38,6 @@ public:
     //PRE: -
     //POST: Se muestra la informacion del animal buscado por el usuario.
     void buscar_animal();
-    //PRE: -
-    //POST: Alimenta a todos los animales.
-    void alimentar_animales();
-    //PRE: -
-    //POST: Higieniza a todos los animales.
-    void higienizar_animales();
     //PRE: -
     //POST: Solicita al usuario opciones de cuidado para un animal de forma individual.
     void cuidar_animal_individual();

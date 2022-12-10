@@ -30,14 +30,9 @@ enum OpcionMenuCuidar {
 void mostrar_menu_principal();
 
 
-//PRE: -
-//POST: Devuelve una opcion valida.
-int pedir_opcion(int cantidad_opciones);
-
-
 //PRE: Las opciones deben estar entre 1 y 7.
 //POST: Ejecuta los metodos necesarios para realizar la tarea.
-void ejecutar_opcion_principal(Reserva* reserva, int opcion);
+bool ejecutar_opcion_principal(Reserva* reserva, int opcion);
 
 
 //PRE: -

@@ -10,6 +10,7 @@ Gato::Gato(string nombre, int edad, string tamanio, char especie, string persona
     hambre = 0;
     higiene = 100;
     existe = true;
+    escapado = false;
 }
 
 
@@ -27,5 +28,29 @@ void Gato::alimentar(){
 void Gato::higienizar(){
     higiene = 100;
     cout<<nombre<<" no requiere ducha."<<endl;
-    }
+}
 
+
+void Gato::mostrar(){
+    cout<<" Nombre: "<<nombre
+    <<" Edad: "<<edad
+    <<" Tamanio: "<<tamanio
+    <<" Especie: Gato"
+    <<" Personalidad: "<<personalidad<<endl
+    <<" Nivel de Hambre: "<<hambre
+    <<" Nivel de Higiene: "<<higiene<<endl;
+}
+
+
+void Gato::mostrar(bool mostrar_adoptado){
+    cout<<" Nombre: "<<nombre
+    <<" Edad: "<<edad
+    <<" Tamanio: "<<tamanio
+    <<" Especie: Gato"
+    <<" Personalidad: "<<personalidad<<endl
+    <<" Nivel de Hambre: "<<hambre
+    <<" Nivel de Higiene: "<<higiene<<endl;
+    if (escapado) cout<<" ESCAPADO"<<endl;
+    else if (!existe) cout<<" ADOPTADO"<<endl;
+    else cout<<endl;
+} 

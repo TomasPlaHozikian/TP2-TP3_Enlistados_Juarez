@@ -2,6 +2,11 @@
 #include <string>
 
 
+void Animal::cambiar_nombre(string nombre){
+    this->nombre = nombre;
+}
+
+
 string Animal::obtener_nombre(){
     return nombre;
 }
@@ -32,6 +37,11 @@ void Animal::eliminar_existencia(){
 }
 
 
+void Animal::animal_escapado(){
+    escapado = true;
+}
+
+
 string Animal::obtener_especie_full(){
     string especie_full;
     if(especie == 'O') especie_full = "Conejo";
@@ -57,17 +67,6 @@ int Animal::obtener_hambre(){
 
 int Animal::obtener_higiene(){
     return higiene;
-}
-
-
-void Animal::mostrar(){
-    cout<<" Nombre: "<<nombre
-    <<" Edad: "<<edad
-    <<" Tamanio: "<<tamanio
-    <<" Especie: "<<obtener_especie_full()
-    <<" Personalidad: "<<personalidad<<endl
-    <<" Nivel de Hambre: "<<hambre
-    <<" Nivel de Higiene: "<<higiene<<endl<<endl;
 }
 
 

@@ -10,6 +10,7 @@ Conejo::Conejo(string nombre, int edad, string tamanio, char especie, string per
     hambre = 0;
     higiene = 100;
     existe = true;
+    escapado = false;
 }
 
 
@@ -27,5 +28,29 @@ void Conejo::alimentar(){
 
 void Conejo::higienizar(){
     higiene = 100;
-    }
+}
 
+
+void Conejo::mostrar(){
+    cout<<" Nombre: "<<nombre
+    <<" Edad: "<<edad
+    <<" Tamanio: "<<tamanio
+    <<" Especie: Conejo"
+    <<" Personalidad: "<<personalidad<<endl
+    <<" Nivel de Hambre: "<<hambre
+    <<" Nivel de Higiene: "<<higiene<<endl;
+}
+
+
+void Conejo::mostrar(bool mostrar_adoptado){
+    cout<<" Nombre: "<<nombre
+    <<" Edad: "<<edad
+    <<" Tamanio: "<<tamanio
+    <<" Especie: Conejo"
+    <<" Personalidad: "<<personalidad<<endl
+    <<" Nivel de Hambre: "<<hambre
+    <<" Nivel de Higiene: "<<higiene<<endl;
+    if (escapado) cout<<" ESCAPADO"<<endl;
+    else if (!existe) cout<<" ADOPTADO"<<endl;
+    else cout<<endl;
+}

@@ -2,7 +2,6 @@
 
 Auto::Auto(){
     combustible = 100;
-    terreno = "camino";
 }
 
 void Auto::cargar_combustible_por_accion(){
@@ -23,15 +22,17 @@ void Auto::cargar_combustible_por_cantidad(int cantidad){
     }
 }
 
-void Auto::consumo_combustible(){
-    int consumo;
-    if (terreno == "camino") consumo = 1;
-    if (terreno == "montania") consumo = 5;
-    if (terreno == "tierra") consumo = 2;
-    if (terreno == "precipicio") consumo = 40;
-    combustible -= consumo;
-}
 
 int Auto::obtener_combustible(){
     return combustible;
+}
+
+
+void Auto::consumir_combustible(int cantidad){
+    combustible -= cantidad;
+}
+
+
+Auto::~Auto(){
+    
 }

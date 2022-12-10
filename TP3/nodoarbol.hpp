@@ -3,6 +3,7 @@
 
 #include "animal.hpp"
 
+
 typedef Animal Dato;
 typedef string Clave;
 
@@ -95,9 +96,7 @@ class Nodo{
         //POST: Muestra todos los datos del arbol.
         int mostrar_todo(int contador);
         void cuidar_animal_individual_nodo();
-        void alimentar_animales();
-        void higienizar_animales();
-        void modificador_hambre_higiene_animales_nodo();
+        int modificador_hambre_higiene_animales_nodo(int contador);
         int mostrar_adopciones_posibles_nodo(int espacio_disponible, int contador);
         void guardar_nodo(ofstream &archivo);
         //---------------------------------------------------------------------------------------------------

@@ -297,17 +297,14 @@ Dato* Nodo::devolver_dato_por_clave(Clave clave){
 
 int Nodo::mostrar_todo(int contador){
     if (hay_hijo_izquierdo()) contador = hijo_izquierdo->mostrar_todo(contador);
-    if (clave1->obtener_existencia())
-    {
-        cout<<contador<<")";
-        clave1->mostrar();
-        contador ++;
-    }
+    cout<<contador<<")";
+    clave1->mostrar(true);
+    contador ++;
     if (hay_hijo_medio()) contador = hijo_medio->mostrar_todo(contador);
-    if (hay_clave2() && clave2->obtener_existencia())
+    if (hay_clave2())
     {
         cout<<contador<<")";
-        clave2->mostrar();
+        clave2->mostrar(true);
         contador ++;
     }
     if (hay_hijo_derecho()) contador = hijo_derecho->mostrar_todo(contador);
@@ -324,30 +321,47 @@ void Nodo::cuidar_animal_individual_nodo(){
 }
 
 
-void Nodo::alimentar_animales(){
-    if (hay_hijo_izquierdo()) hijo_izquierdo->alimentar_animales();
-    if (clave1->obtener_existencia()) clave1->alimentar();
-    if (hay_hijo_medio()) hijo_medio->alimentar_animales();
-    if (hay_clave2()) if (clave2->obtener_existencia()) clave2->alimentar();
-    if (hay_hijo_derecho()) hijo_derecho->alimentar_animales();
-}
-
-
-void Nodo::higienizar_animales(){
-    if (hay_hijo_izquierdo()) hijo_izquierdo->higienizar_animales();
-    if (clave1->obtener_existencia()) clave1->higienizar();
-    if (hay_hijo_medio()) hijo_medio->higienizar_animales();
-    if (hay_clave2()) if (clave2->obtener_existencia()) clave2->higienizar();
-    if (hay_hijo_derecho()) hijo_derecho->higienizar_animales();
-}
-
-
-void Nodo::modificador_hambre_higiene_animales_nodo(){
-    if (hay_hijo_izquierdo()) hijo_izquierdo->modificador_hambre_higiene_animales_nodo();
-    if (clave1->obtener_existencia()) clave1->modificador_hambre_higiene();
-    if (hay_hijo_medio()) hijo_medio->modificador_hambre_higiene_animales_nodo();
-    if (hay_clave2()) if (clave2->obtener_existencia()) clave2->modificador_hambre_higiene();
-    if (hay_hijo_derecho()) hijo_derecho->modificador_hambre_higiene_animales_nodo();
+int Nodo::modificador_hambre_higiene_animales_nodo(int contador){
+    if (hay_hijo_izquierdo()) contador = hijo_izquierdo->modificador_hambre_higiene_animales_nodo(contador);
+    if (clave1->obtener_existencia()){
+        clave1->modificador_hambre_higiene();
+        if (clave1->obtener_hambre() == 100) {
+            cout<<"El animal:"<<endl;
+            clave1->mostrar();
+            cout<<"Se escapo de la reserva por hambre."<<endl;
+            clave1->eliminar_existencia();
+            clave1->animal_escapado();
+            contador++;
+        }
+        else if (clave1->obtener_higiene() == 0)
+        {
+            cout<<"El animal:"<<endl;
+            clave1->mostrar();
+            cout<<"Se escapo de la reserva por falta de higiene."<<endl;
+            clave1->eliminar_existencia();
+            clave1->animal_escapado();
+            contador++;
+        }
+    } 
+    if (hay_hijo_medio()) contador = hijo_medio->modificador_hambre_higiene_animales_nodo(contador);
+    if (hay_clave2()) if (clave2->obtener_existencia()){
+        clave2->modificador_hambre_higiene();
+        if (clave2->obtener_hambre() == 100) {
+            cout<<"El animal:"<<endl;
+            clave2->mostrar();
+            cout<<"Se escapo de la reserva por hambre."<<endl;
+            baja(clave2->obtener_nombre());
+        }
+        else if (clave2->obtener_higiene() == 0)
+        {
+            cout<<"El animal:"<<endl;
+            clave2->mostrar();
+            cout<<"Se escapo de la reserva por falta de higiene."<<endl;
+            baja(clave2->obtener_nombre());
+        }
+    }
+    if (hay_hijo_derecho()) contador = hijo_derecho->modificador_hambre_higiene_animales_nodo(contador);
+    return contador;
 }
 
 
